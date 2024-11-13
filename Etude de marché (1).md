@@ -9,13 +9,43 @@ Films tournés en Creuse
 Croissance ou déclin ?   
 petit départ marché local
 
-par departement : https://www.cnc.fr/professionnels/etudes-et-rapports/etudes-prospectives/geographie-du-cinema-en-2023_2263498
-
-
-
 https://www.cnc.fr/documents/36995/2125769/Public+des+salles-Octobre+2024.pdf/468118d4-075a-5dd9-a543-743cfdcd3e0f?t=1731494260232
 
 https://www.cnc.fr/professionnels/actualites/au-mois-doctobre-la-frequentation-des-salles-de-cinema-consolide-sa-remontee-avec-plus-de-15-millions-dentrees_2288194
+
+par departement : https://www.cnc.fr/professionnels/etudes-et-rapports/etudes-prospectives/geographie-du-cinema-en-2023_2263498
+2023
+Creuse : 
+Nombre d'entrées : 161 millions
+Evolution par rapport à 2022 : +17.9 %
+Recettes guichets : 0.89 Millions
+Indice de fréquentation : 1.35
+Séances : 11 000
+Fauteuils : 2 150
+Taux d'occupation des fauteuils : 8,8 %
+Communes équipées : 7
+Etablissment actifs : 7
+Ecrans actifs : 12
+
+France :
+Nombre d'entrées : 69 56 millions
+Evolution par rapport à 2022 : +18.6 %
+Recettes guichets : 1 333. 851 Millions
+Indice de fréquentation : 2.71
+Séances : 8 335 000
+Fauteuils : 1 159 978
+Taux d'occupation des fauteuils : 12.4 %
+Communes équipées : 1 683
+Etablissment actifs : 2 056
+Ecrans actifs : 6 322
+
+https://www.cnc.fr/documents/36995/2097582/3761_CNC-GEO-chiffre+cle%CC%81+v06.pdf/448e9b00-a77c-c064-45db-5e05f93fee14?t=1727165529938
+Le cinéma en Nouvelle-Aquitaine en 2023 : 
+Profil des spectateurs : 60,4 % des habitants de la région sont spectateurs de cinéma 
+Femme : 45,1 %
+Homme : 54,9 %
+
+
 
 2. # La demande
 Quantifier et qualifier la demande
