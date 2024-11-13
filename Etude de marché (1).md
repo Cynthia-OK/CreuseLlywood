@@ -15,6 +15,9 @@ Structure de la population de 15 ans ou plus par catégorie socioprofessionnelle
 
 Évolution de la population entre 2014 et 2021 et estimation de la population au 1ᵉʳ janvier 2024 : comparaisons départementales : https://www.insee.fr/fr/statistiques/2012730#tableau-TCRD_044_tab1_departements
 
+Évolution et structure de la population en 2021 : Recensement de la population – Résultats pour toutes les communes, départements, régions, intercommunalités... : https://www.insee.fr/fr/statistiques/8200783?sommaire=8200811&geo=DEP-23
+
+
 https://www.cnc.fr/documents/36995/2125769/Public+des+salles-Octobre+2024.pdf/468118d4-075a-5dd9-a543-743cfdcd3e0f?t=1731494260232
 
 https://www.cnc.fr/professionnels/actualites/au-mois-doctobre-la-frequentation-des-salles-de-cinema-consolide-sa-remontee-avec-plus-de-15-millions-dentrees_2288194
