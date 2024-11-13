@@ -1,4 +1,6 @@
 1. # Le marché : conso actuelle de cinéma
+Clarifier la problématique
+Définer zone geo, clientèle, produits et services
 
 Sur le CNC  
 INSEE  
@@ -8,7 +10,7 @@ Croissance ou déclin ?
 petit départ marché local
 
 2. # La demande
-
+Quantifier et qualifier la demande
 INSEE  
 Population creusoise : Statistiques classiques : 
 
@@ -24,14 +26,7 @@ Offre demandeur emploi, etudiant, personnes âgées
 
 3. # L’offre
 
-Nombre de cinémas   
-Nombre de film diffusés par an (quelquechose du genre)  
-Durée moyenne des films  
-Les acteurs des films et période et leur âge   
-Rendement des films  
-Comparaison entre les acteurs présents au cinéma et dans les séries  
-Les films les mieux notés et les caractéristiques qu’ils partagent  
-Prix pratiqué  
+
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
 
 4. # L’environnement
