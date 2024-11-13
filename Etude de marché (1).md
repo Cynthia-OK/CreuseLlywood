@@ -11,6 +11,7 @@ petit départ marché local
 
 par departement : https://www.cnc.fr/professionnels/etudes-et-rapports/etudes-prospectives/geographie-du-cinema-en-2023_2263498
 Structure de la population de 15 ans ou plus par catégorie socioprofessionnelle en 2021 : comparaisons départementales : https://www.insee.fr/fr/statistiques/2012701
+Évolution de la population entre 2014 et 2021 et estimation de la population au 1ᵉʳ janvier 2024 : comparaisons départementales : https://www.insee.fr/fr/statistiques/2012730#tableau-TCRD_044_tab1_departements
 
 https://www.cnc.fr/documents/36995/2125769/Public+des+salles-Octobre+2024.pdf/468118d4-075a-5dd9-a543-743cfdcd3e0f?t=1731494260232
 
