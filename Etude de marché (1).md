@@ -14,21 +14,21 @@ https://www.cnc.fr/documents/36995/2125769/Public+des+salles-Octobre+2024.pdf/46
 https://www.cnc.fr/professionnels/actualites/au-mois-doctobre-la-frequentation-des-salles-de-cinema-consolide-sa-remontee-avec-plus-de-15-millions-dentrees_2288194
 
 par departement : https://www.cnc.fr/professionnels/etudes-et-rapports/etudes-prospectives/geographie-du-cinema-en-2023_2263498
-2023
-Creuse : 
-Nombre d'entrées : 161 millions
-Evolution par rapport à 2022 : +17.9 %
-Recettes guichets : 0.89 Millions
-Indice de fréquentation : 1.35
-Séances : 11 000
-Fauteuils : 2 150
-Taux d'occupation des fauteuils : 8,8 %
-Communes équipées : 7
-Etablissment actifs : 7
-Ecrans actifs : 12
+2023  
+Creuse :   
+Nombre d'entrées : 161 millions  
+Evolution par rapport à 2022 : +17.9 %  
+Recettes guichets : 0.89 Millions  
+Indice de fréquentation : 1.35  
+Séances : 11 000  
+Fauteuils : 2 150  
+Taux d'occupation des fauteuils : 8,8 %  
+Communes équipées : 7  
+Etablissment actifs : 7  
+Ecrans actifs : 12  
 
-France :
-Nombre d'entrées : 69 56 millions
+France :  
+Nombre d'entrées : 69 56 millions  
 Evolution par rapport à 2022 : +18.6 %
 Recettes guichets : 1 333. 851 Millions
 Indice de fréquentation : 2.71
