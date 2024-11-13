@@ -83,9 +83,7 @@ Population creusoise : Statistiques classiques :
 * catégories socio  
 * fréquence / budget cinéma
 
-Collectivité : offre journée ciné gratuit ?   
-tickets gratuits pour les centres sociaux …  
-Offre demandeur emploi, etudiant, personnes âgées
+
 
 3. # L’offre
 
@@ -98,6 +96,11 @@ Facteurs externes qui peuvent influencer le marché
 lien général : https://statistiques-locales.insee.fr/#c=indicator&i=filosofi.tp60age2&s=2021&selcodgeo=23&t=A01&view=map2
 
 Environnement économique : pouvoir d’achat
+Collectivité : offre journée ciné gratuit ?     
+tickets gratuits pour les centres sociaux …    
+Offre demandeur emploi, etudiant, personnes âgées  
+
+
 
 Environnement socio-culturel : démographie, composition socio-culturelle de la population et tendances, mobilité sociale, modes de consommation, éducation, travail, loisirs…
 
