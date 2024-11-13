@@ -9,6 +9,8 @@ Films tournés en Creuse
 Croissance ou déclin ?   
 petit départ marché local
 
+par departement : https://www.cnc.fr/professionnels/etudes-et-rapports/etudes-prospectives/geographie-du-cinema-en-2023_2263498
+
 https://www.cnc.fr/documents/36995/2125769/Public+des+salles-Octobre+2024.pdf/468118d4-075a-5dd9-a543-743cfdcd3e0f?t=1731494260232
 
 https://www.cnc.fr/professionnels/actualites/au-mois-doctobre-la-frequentation-des-salles-de-cinema-consolide-sa-remontee-avec-plus-de-15-millions-dentrees_2288194
