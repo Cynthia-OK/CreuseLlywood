@@ -8,9 +8,10 @@ autre : presse …
 Films tournés en Creuse  
 Croissance ou déclin ?   
 petit départ marché local
-
+https://www.cnc.fr/documents/36995/2125769/Public+des+salles-Octobre+2024.pdf/468118d4-075a-5dd9-a543-743cfdcd3e0f?t=1731494260232
 2. # La demande
 Quantifier et qualifier la demande
+
 INSEE  
 Population creusoise : Statistiques classiques : 
 
