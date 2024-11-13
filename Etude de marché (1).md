@@ -26,10 +26,10 @@ Offre demandeur emploi, etudiant, personnes âgées
 
 3. # L’offre
 
-
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
 
 4. # L’environnement
+Facteurs externes qui peuvent influencer le marché 
 
 Environnement économique : pouvoir d’achat
 
