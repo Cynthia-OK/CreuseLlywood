@@ -46,6 +46,9 @@ Concurrence / positionnement , les types d’entreprises qui proposent la même 
 4. # L’environnement
 Facteurs externes qui peuvent influencer le marché 
 
+
+lien général : https://statistiques-locales.insee.fr/#c=indicator&i=filosofi.tp60age2&s=2021&selcodgeo=23&t=A01&view=map2
+
 Environnement économique : pouvoir d’achat
 
 Environnement socio-culturel : démographie, composition socio-culturelle de la population et tendances, mobilité sociale, modes de consommation, éducation, travail, loisirs…
