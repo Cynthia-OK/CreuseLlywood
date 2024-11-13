@@ -51,11 +51,15 @@ Homme : 54,9 %
 35-49 ans : 17,1 %  
 50 ans et + : 32,3 %  
 
+CSP + : 24,3 % 
+CSP - : 27,8 %  
+inactifs : 47,9 %  
+dont étudiants : 29,9 %  
 
 
-
-
-
+9,9 % des spectateurs sont assidus  
+55,6 % des spectateurs sont réguliers  
+34,6 % des spectateurs sont occasionnels  
 
 
 2. # La demande
