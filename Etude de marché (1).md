@@ -45,6 +45,17 @@ Profil des spectateurs : 60,4 % des habitants de la région sont spectateurs de 
 Femme : 45,1 %  
 Homme : 54,9 %  
 
+3-14 ans : 17.4 %
+15-24 ans : 18,6 %
+25-34 ans : 14,5 %
+35-49 ans : 17,1 %
+50 ans et + : 32,3 %
+
+
+
+
+
+
 
 
 2. # La demande
