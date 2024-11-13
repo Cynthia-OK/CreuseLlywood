@@ -28,22 +28,22 @@ Etablissment actifs : 7
 Ecrans actifs : 12  
 
 France :  
-Nombre d'entrées : 69 56 millions  
-Evolution par rapport à 2022 : +18.6 %
-Recettes guichets : 1 333. 851 Millions
-Indice de fréquentation : 2.71
-Séances : 8 335 000
-Fauteuils : 1 159 978
-Taux d'occupation des fauteuils : 12.4 %
-Communes équipées : 1 683
-Etablissment actifs : 2 056
-Ecrans actifs : 6 322
+Nombre d'entrées : 69 56 millions   
+Evolution par rapport à 2022 : +18.6 %  
+Recettes guichets : 1 333. 851 Millions  
+Indice de fréquentation : 2.71  
+Séances : 8 335 000  
+Fauteuils : 1 159 978  
+Taux d'occupation des fauteuils : 12.4 %  
+Communes équipées : 1 683  
+Etablissment actifs : 2 056  
+Ecrans actifs : 6 322  
 
-https://www.cnc.fr/documents/36995/2097582/3761_CNC-GEO-chiffre+cle%CC%81+v06.pdf/448e9b00-a77c-c064-45db-5e05f93fee14?t=1727165529938
-Le cinéma en Nouvelle-Aquitaine en 2023 : 
-Profil des spectateurs : 60,4 % des habitants de la région sont spectateurs de cinéma 
-Femme : 45,1 %
-Homme : 54,9 %
+https://www.cnc.fr/documents/36995/2097582/3761_CNC-GEO-chiffre+cle%CC%81+v06.pdf/448e9b00-a77c-c064-45db-5e05f93fee14?t=1727165529938  
+Le cinéma en Nouvelle-Aquitaine en 2023 :   
+Profil des spectateurs : 60,4 % des habitants de la région sont spectateurs de cinéma   
+Femme : 45,1 %  
+Homme : 54,9 %  
 
 
 
