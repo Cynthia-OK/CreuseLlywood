@@ -153,6 +153,11 @@ Ouvriers					 | 12 725| 	12,0| 	11 789	| 11,4	| 10 742| 10,7
 Retraités					 | 41 475| 	39,2| 	41 623	| 40,1	| 39 898| 39,7  
 Autres personnes sans activité professionnelle	 | 12 659| 	12,0|   11 985	| 11,6	| 12 872| 12,8  
 
+
+FAM T1 - Ménages selon leur composition
+![image](https://github.com/user-attachments/assets/2f7b4e2c-ff17-4c75-a8ef-2e29fd408468)
+
+
 3. # L’offre
 
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
