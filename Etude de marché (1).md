@@ -89,6 +89,11 @@ Population creusoise : Statistiques classiques :
 
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
 
+Les concurrents :  
+- les sites des cinémas
+- allociné
+
+
 4. # L’environnement
 Facteurs externes qui peuvent influencer le marché 
 
