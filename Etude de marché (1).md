@@ -156,7 +156,18 @@ Autres personnes sans activité professionnelle	 | 12 659| 	12,0|   11 985	| 11,
 
 FAM T1 - Ménages selon leur composition
 ![image](https://github.com/user-attachments/assets/2f7b4e2c-ff17-4c75-a8ef-2e29fd408468)
-
+FAM T1 - Ménages selon leur composition  
+	Type de ménages					|Nombre de ménages|				Population des ménages | 
+							|2010	 |%	|2015	|%	|2021	|%	|2010	|2015	|2021  
+Ensemble						|57 544	|100,0	|57 691	|100,0	|57 522	|100,0	|118 492|116 481|112 178  
+Ménages d'une personne					|21 489	|37,3	|22 544	|39,1	|24 372	|42,4	|21 489	|22 544	|24 372  
+ Hommes seuls						|9 190	|16,0	|10 058	|17,4	|11 105	|19,3	|9 190	|10 058	|11 105  
+ Femmes seules						|12 300	|21,4	|12 486	|21,6	|13 267	|23,1	|12 300	|12 486	|13 267  
+Autres ménages sans famille				|1 412	|2,5	|1 420	|2,5	|875	|1,5	|3 322	|3 479	|1 925  
+Ménages avec famille(s) dont la famille principale est :|34 642	|60,2	|33 726	|58,5	|32 275	|56,1	|93 680	|90 458	|85 882  
+ Un couple sans enfant					|18 319	|31,8	|17 935	|31,1	|17 036	|29,6	|37 970	|36 790	|34 770  
+ Un couple avec enfant(s)				|12 065 |21,0	|11 328	|19,6	|10 458	|18,2	|45 071	|42 586	|39 322  
+ Une famille monoparentale				|4 258	|7,4	|4 463	|7,7	|4 781	|8,3	|10 639	|11 082	|11 790  
 
 3. # L’offre
 
