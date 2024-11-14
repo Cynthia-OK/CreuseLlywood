@@ -83,27 +83,27 @@ Population creusoise : Statistiques classiques :
 * catégories socio  
 * fréquence / budget cinéma
 
-INSEE 2021 : https://www.insee.fr/fr/statistiques/1405599?geo=DEP-23
+INSEE 2021 : https://www.insee.fr/fr/statistiques/1405599?geo=DEP-23  
 
-Population en 2021	115 702
-Densité de la population (nombre d'habitants au km²) en 2021	20,8
-Superficie en 2021, en km²	5 565,4
-Nombre de ménages en 2021	57 359
-Médiane du revenu disponible par unité de consommation en 2021, en euros	20 620
-Taux de pauvreté en 2021, en %	19,2
-Taux d'activité des 15 à 64 ans en 2021	73,3
-Taux de chômage des 15 à 64 ans en 2021	11,4
+Population en 2021 : 115 702  
+Densité de la population (nombre d'habitants au km²) en 2021	20,8  
+Superficie en 2021, en km² : 5 565,4  
+Nombre de ménages en 202 : 57 359  
+Médiane du revenu disponible par unité de consommation en 2021, en euros : 20 620  
+Taux de pauvreté en 2021, en % : 19,2  
+Taux d'activité des 15 à 64 ans en 2021 : 73,3  
+Taux de chômage des 15 à 64 ans en 2021 : 11,4  
 
-https://www.insee.fr/fr/statistiques/2012701#tableau-TCRD_005_tab1_departements
+https://www.insee.fr/fr/statistiques/2012701#tableau-TCRD_005_tab1_departements  
 
-Part des agriculteurs exploitants (en %)	4,2
-Part des artisans, commerçants, chefs d'entreprises (en %)	3,7
-Part des cadres, professions intellectuelles supérieures (en %)	4,2
-Part des professions intermédiaires (en %)	10,0
-Part des employés (en %)	14,6
-Part des ouvriers (en %)	10,7
-Part des retraités (en %)	39,7
-Part des autres personnes sans activité professionnelle (en %)	12,8
+Part des agriculteurs exploitants (en %) : 4,2  
+Part des artisans, commerçants, chefs d'entreprises (en %) : 3,7  
+Part des cadres, professions intellectuelles supérieures (en %) : 4,2  
+Part des professions intermédiaires (en %) : 10,0  
+Part des employés (en %) : 14,6  
+Part des ouvriers (en %) : 10,7  
+Part des retraités (en %) : 39,7  
+Part des autres personnes sans activité professionnelle (en %) : 12,8  
 
 3. # L’offre
 
