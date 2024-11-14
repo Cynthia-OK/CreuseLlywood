@@ -103,5 +103,6 @@ Offre demandeur emploi, etudiant, personnes âgées
 
 
 Environnement socio-culturel : démographie, composition socio-culturelle de la population et tendances, mobilité sociale, modes de consommation, éducation, travail, loisirs…
+création de passesport culturel dans toous les cinémas avec une réduction pour les personnes en difficulté
 
 Environnement technologique : Innovation (3D, sièges qui bougent…)
