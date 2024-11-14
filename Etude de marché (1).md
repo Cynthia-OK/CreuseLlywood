@@ -141,6 +141,18 @@ Ensemble	 56 364| 	100,0| 	59 338| 	100,0
 65 ans ou plus	15 764| 	28,0	| 19 964	| 33,6  
 
 
+POP T5 - Population de 15 ans ou plus selon la catégorie socioprofessionnelle  
+Catégorie socioprofessionnelle		  	 | 2010	| 	%| 	2015	| %	| 2021	| %  
+Ensemble	                	  	 | 105 749| 	100,0| 	103 675	| 100,0	| 100 372| 100,0  
+Agriculteurs exploitants		  	 | 5 029| 	4,8| 	4 440	| 4,3	| 4 176	| 4,2  
+Artisans, commerçants, chefs d'entreprise 	 | 3 791| 	3,6| 	3 897	| 3,8	| 3 755	| 3,7  
+Cadres et professions intellectuelles supérieures| 4 208| 	4,0| 	3 857	| 3,7	| 4 249	| 4,2  
+Professions intermédiaires			 | 9 775| 	9,2| 	10 029	| 9,7	| 10 004| 10,0  
+Employés					 | 16 085| 	15,2| 	16 055	| 15,5	| 14 677| 14,6  
+Ouvriers					 | 12 725| 	12,0| 	11 789	| 11,4	| 10 742| 10,7  
+Retraités					 | 41 475| 	39,2| 	41 623	| 40,1	| 39 898| 39,7  
+Autres personnes sans activité professionnelle	 | 12 659| 	12,0|   11 985	| 11,6	| 12 872| 12,8  
+
 3. # L’offre
 
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
