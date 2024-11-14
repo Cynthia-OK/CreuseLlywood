@@ -161,6 +161,7 @@ Les concurrents :
 - les sites des cinémas mais que programme ex: https://www.cinema-senechal.com/
 - allociné: https://www.allocine.fr/seance/film-307991/recherche/?q=la%20creuse
 - Telerama : https://www.telerama.fr/cinema/
+- Ciné série : https://www.cineserie.com/movies/5545172/
 - creuse confluence : https://www.creuseconfluence.com/loisirs/cinemas
 
 
