@@ -205,8 +205,11 @@ Nombre d'immigrés	Part dans la pop. (en %)	Part des immigrés nés dans l'Union
 Creuse	6 351	5,5	30,6	2,7	3,0	0,9	5,2  
 
 https://www.insee.fr/fr/statistiques/2011101?geo=DEP-23#tableau-FOR_G2
+![image](https://github.com/user-attachments/assets/2aff54ac-37e9-4946-84cf-f7c2408c0de7)
+
 ![image](https://github.com/user-attachments/assets/60bc3df7-75f4-4b96-b540-55204c25037f)
 ![image](https://github.com/user-attachments/assets/29dde3ee-1414-4a23-94ca-28fa4be28f0c)
+![Uploading image.png…]()
 
 
 Environnement socio-culturel : démographie, composition socio-culturelle de la population et tendances, mobilité sociale, modes de consommation, éducation, travail, loisirs…
