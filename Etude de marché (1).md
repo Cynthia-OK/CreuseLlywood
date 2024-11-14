@@ -90,7 +90,7 @@ Population creusoise : Statistiques classiques :
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
 
 Les concurrents :  
-- les sites des cinémas
+- les sites des cinémas ex: https://www.cinema-senechal.com/
 - allociné
 
 
