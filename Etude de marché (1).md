@@ -199,6 +199,11 @@ Population étrangère selon les principales nationalités en 2021 : comparaison
 Nombre d'étrangers 	Part dans la population (en %)	Part des étrangers provenant de l'Union européenne (en %) Part des Algériens (en %) Part des Marocains (en %) Part des Tunisiens (en %)	Part des Turcs (en %)  
 Creuse	5 270	4,6	27,5	1,6	2,3	0,5	5,9  
 
+https://www.insee.fr/fr/statistiques/2012727#tableau-TCRD_012_tab1_departements  
+Population immigrée selon les principaux pays de naissance en 2021 : comparaisons départementales  
+Nombre d'immigrés	Part dans la pop. (en %)	Part des immigrés nés dans l'Union européenne (en %)	Part des immigrés nés en Algérie (en %)	Part des immigrés nés au Maroc (en %)	Part des immigrés nés en Tunisie (en %)	Part des immigrés nés en Turquie (en %)  
+Creuse	6 351	5,5	30,6	2,7	3,0	0,9	5,2  
+
 
 Environnement socio-culturel : démographie, composition socio-culturelle de la population et tendances, mobilité sociale, modes de consommation, éducation, travail, loisirs…
 création de passesport culturel dans toous les cinémas avec une réduction pour les personnes en difficulté
