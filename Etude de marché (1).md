@@ -157,13 +157,14 @@ Autres personnes sans activité professionnelle	 | 12 659| 	12,0|   11 985	| 11,
 
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
 
-Les concurrents :  
-- les sites des cinémas mais que programme ex: https://www.cinema-senechal.com/
-- allociné: https://www.allocine.fr/seance/film-307991/recherche/?q=la%20creuse
-- Telerama : https://www.telerama.fr/cinema/
-- Ciné série : https://www.cineserie.com/movies/5545172/
-- Ecran large : https://www.ecranlarge.com/films/1407985-venom-3
-- creuse confluence : https://www.creuseconfluence.com/loisirs/cinemas
+Les concurrents :   
+- les sites des cinémas mais que programme ex: https://www.cinema-senechal.com/  
+- allociné: https://www.allocine.fr/seance/film-307991/recherche/?q=la%20creuse  
+- Telerama : https://www.telerama.fr/cinema/  
+- Ciné série : https://www.cineserie.com/movies/5545172/  
+- Ecran large : https://www.ecranlarge.com/films/1407985-venom-3  
+- Sens critique : https://www.senscritique.com/film/dune_deuxieme_partie/45424060  
+- creuse confluence : https://www.creuseconfluence.com/loisirs/cinemas  
 
 
 4. # L’environnement
