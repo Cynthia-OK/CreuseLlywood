@@ -204,6 +204,9 @@ Population immigrée selon les principaux pays de naissance en 2021 : comparaiso
 Nombre d'immigrés	Part dans la pop. (en %)	Part des immigrés nés dans l'Union européenne (en %)	Part des immigrés nés en Algérie (en %)	Part des immigrés nés au Maroc (en %)	Part des immigrés nés en Tunisie (en %)	Part des immigrés nés en Turquie (en %)  
 Creuse	6 351	5,5	30,6	2,7	3,0	0,9	5,2  
 
+https://www.insee.fr/fr/statistiques/2011101?geo=DEP-23#tableau-FOR_G2
+![image](https://github.com/user-attachments/assets/60bc3df7-75f4-4b96-b540-55204c25037f)
+
 
 Environnement socio-culturel : démographie, composition socio-culturelle de la population et tendances, mobilité sociale, modes de consommation, éducation, travail, loisirs…
 création de passesport culturel dans toous les cinémas avec une réduction pour les personnes en difficulté
