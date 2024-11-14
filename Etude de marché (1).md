@@ -124,6 +124,23 @@ Ensemble	123 029	100,0	120 365	100,0	115 702	100,0
 75 ans ou plus	19 100	15,5	18 735	15,6	17 394	15,0  
 
 
+POP T3 - Population par sexe et âge en 2021  
+Âge	        Hommes	%	 Femmes	  %  
+Ensemble	 56 364	100,0	59 338	100,0  
+0 à 14 ans	7 695	13,7	7 548	12,7  
+15 à 29 ans	7 623	13,5	6 617	11,2    
+30 à 44 ans	8 380	14,9	8 177	13,8  
+45 à 59 ans	12 039	21,4	12 089	20,4  
+60 à 74 ans	13 920	24,7	14 219	24,0  
+75 à 89 ans	5 944	10,5	8 585	14,5  
+90 ans ou plus	763	1,4	2 101	3,5  
+
+
+0 à 19 ans	10 796	19,2	10 163	17,1  
+20 à 64 ans	29 804	52,9	29 212	49,2  
+65 ans ou plus	15 764	28,0	19 964	33,6  
+
+
 3. # L’offre
 
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
