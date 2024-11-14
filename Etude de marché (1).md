@@ -194,6 +194,10 @@ Collectivité : offre journée ciné gratuit ?
 tickets gratuits pour les centres sociaux …    
 Offre demandeur emploi, etudiant, personnes âgées  
 
+https://www.insee.fr/fr/statistiques/2012716#tableau-TCRD_010_tab1_departements  
+Population étrangère selon les principales nationalités en 2021 : comparaisons départementales  
+Nombre d'étrangers 	Part dans la population (en %)	Part des étrangers provenant de l'Union européenne (en %) Part des Algériens (en %) Part des Marocains (en %) Part des Tunisiens (en %)	Part des Turcs (en %)  
+Creuse	5 270	4,6	27,5	1,6	2,3	0,5	5,9  
 
 
 Environnement socio-culturel : démographie, composition socio-culturelle de la population et tendances, mobilité sociale, modes de consommation, éducation, travail, loisirs…
