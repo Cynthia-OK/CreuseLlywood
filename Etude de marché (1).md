@@ -105,6 +105,15 @@ Part des ouvriers (en %) : 10,7
 Part des retraités (en %) : 39,7  
 Part des autres personnes sans activité professionnelle (en %) : 12,8  
 
+
+https://www.insee.fr/fr/statistiques/2012730#tableau-TCRD_044_tab1_departements
+
+Population au 1ᵉʳ janvier 2015 (en milliers) : 120,4  
+Population au 1ᵉʳ janvier 2021 (en milliers) : 115,7  
+Estimation de la population au 1ᵉʳ janvier 2024 (en milliers) (p) : 113,9  
+Variation annuelle moyenne 2015-2021 (en %) : -0,7  
+
+
 3. # L’offre
 
 Concurrence / positionnement , les types d’entreprises qui proposent la même chose que nous, Forces et faiblesses, part de marché des concurrents
