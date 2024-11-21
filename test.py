@@ -4,5 +4,5 @@ tmdb_full = pd.read_csv("C:\Users\LOTUS\OneDrive\Documents\Formation_data_analys
 
 test
 
-hello....
+
 
