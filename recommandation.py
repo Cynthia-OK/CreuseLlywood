@@ -2,13 +2,22 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.neighbors import NearestNeighbors
-import pickle
 from sklearn.preprocessing import MinMaxScaler
+from streamlit_option_menu import option_menu
+import plotly.express as px
 
 films = pd.read_csv("./donnees/films_genre_colonne.csv", sep='\t', low_memory=False)
+df_acteur_genre = pd.read_csv("./donnees/df_acteur_genre.csv", sep='\t', low_memory=False)
+df_acteur_genre = df_acteur_genre.drop('Unnamed: 0',axis=1)
+df_acteur_genre.sort_values('nombre',ascending=False, inplace=True)
+df_acteur_genre = df_acteur_genre.head(50)
+budget = pd.read_csv("./donnees/budget.csv",low_memory=False)
+                              
 # Charger le modèle
-with open('modele_films_nn.pkl', 'rb') as f: #là vous mettez l'emplacement et le nom de votre fichier pkl
+import pickle
+with open('modele_films_nn.pkl', 'rb') as f: 
     model_charge = pickle.load(f)
+
 caracteristiques = ['popularity','vote_average', 'genre_Drama', 'genre_Horror',
        'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
        'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
@@ -54,4 +63,42 @@ def films_similaires(tmdb):
   distances, indices = model_charge.kneighbors(caract_film_encoded)
   return films.iloc[indices[0,1:]].reset_index(drop=True)
 
-st.title('moi')
+
+# st.markdown(
+#     """
+#     <link rel="stylesheet" type="text/css" href="https://www.example.com/style.css">
+#     """,
+#     unsafe_allow_html=True
+# )
+
+st.header('Bienvuenu sur notre site de recommandation de films')
+
+with st.sidebar:
+   selection = option_menu(
+            menu_title=None,
+            options = ["Statistiques", "films"]
+        )
+
+if selection == "Statistiques":
+    st.write("Et si on faisait des graphiques amusants!")
+    liste = df_acteur_genre['acteur']
+    choix = st.selectbox('choisis ton acteur préféré:',liste)
+    if choix in liste: 
+        fig = px.bar(df_acteur_genre, x='genre', y='nombre', barmode='group', hover_data=('genre','nombre'))
+        st.plotly_chart(fig,use_container_width=True)
+
+    # fig = px.scatter(df_acteur_genre, x='acteur', y='genre', size="nombre")
+    # st.plotly_chart(fig,use_container_width=True)
+
+    # st.area_chart(df_acteur_genre, x='acteur', y='nombre', color='genre')
+
+    #graphique pour le budget ax,min et moyen
+    fig = px.bar(budget, x='year', y='budget_max', animation_frame='year')
+    st.plotly_chart(fig,use_container_width=True)
+
+
+
+elif selection == "films":
+    st.write("Bienvenue sur mon site de recommandation")
+    st.text_input('Mets ici ton titre de film préféré')
+    st.checkbox('Appuis maintenant ici')
