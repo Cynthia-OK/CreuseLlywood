@@ -5,6 +5,8 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import MinMaxScaler
 from streamlit_option_menu import option_menu
 import plotly.express as px
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 films = pd.read_csv("./donnees/films_genre_colonne.csv", sep='\t', low_memory=False)
 df_acteur_genre = pd.read_csv("./donnees/df_acteur_genre.csv", sep='\t', low_memory=False)
@@ -12,6 +14,7 @@ df_acteur_genre = df_acteur_genre.drop('Unnamed: 0',axis=1)
 df_acteur_genre.sort_values('nombre',ascending=False, inplace=True)
 df_acteur_genre = df_acteur_genre.head(50)
 budget = pd.read_csv("./donnees/budget.csv",low_memory=False)
+budget = budget.astype('int64')
                               
 # Charger le modèle
 import pickle
@@ -81,11 +84,12 @@ with st.sidebar:
 
 if selection == "Statistiques":
     st.write("Et si on faisait des graphiques amusants!")
+
     liste = df_acteur_genre['acteur']
     choix = st.selectbox('choisis ton acteur préféré:',liste)
-    if choix in liste: 
-        fig = px.bar(df_acteur_genre, x='genre', y='nombre', barmode='group', hover_data=('genre','nombre'))
-        st.plotly_chart(fig,use_container_width=True)
+    acteur = df_acteur_genre[df_acteur_genre['acteur']==choix]
+    fig = px.bar(acteur, x='genre', y='nombre', hover_data=('genre','nombre'))
+    st.plotly_chart(fig,use_container_width=True)
 
     # fig = px.scatter(df_acteur_genre, x='acteur', y='genre', size="nombre")
     # st.plotly_chart(fig,use_container_width=True)
@@ -93,7 +97,37 @@ if selection == "Statistiques":
     # st.area_chart(df_acteur_genre, x='acteur', y='nombre', color='genre')
 
     #graphique pour le budget ax,min et moyen
-    fig = px.bar(budget, x='year', y='budget_max', animation_frame='year')
+    #import plotly.figure_factory as ff
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+    
+    #group_labels = ['max', 'min', 'moyen']
+    #fig = px.histogram(budget, x='budget_max', y='budget_min', color='budget_moyen')
+    #fig = px.histogram(budget, x='year', y='budget_min')
+    fig  =  make_subplots ( specs = [[{ "secondary_y" :  True }]])
+
+    fig . add_trace ( 
+    go . Scatter ( x = budget['year'],  y = budget['budget_max'],  name = "max" ), 
+    secondary_y = False , )
+
+    fig . add_trace ( 
+    go . Scatter ( x = budget['year'],  y = budget['budget_moyen'],  name = "moyen" ), 
+    secondary_y = True , )
+
+    st.plotly_chart(fig,use_container_width=True)
+    
+    #le graphique du revenue
+    revenue = pd.read_csv("./donnees/revenue.csv",low_memory=False)
+    fig  =  make_subplots ( specs = [[{ "secondary_y" :  True }]])
+
+    fig . add_trace ( 
+    go . Scatter ( x = revenue['year'],  y = revenue['revenu_max'],  name = "max" ), 
+    secondary_y = False , )
+
+    fig . add_trace ( 
+    go . Scatter ( x = revenue['year'],  y = revenue['revenu_moyen'],  name = "moyen" ), 
+    secondary_y = True , )
+
     st.plotly_chart(fig,use_container_width=True)
 
 
