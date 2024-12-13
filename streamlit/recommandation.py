@@ -26,43 +26,43 @@ st.title('Bienvenue sur notre page de recommandation de films')
 # Chargement des données
 films = pd.read_csv('./donnees/films_genre_colonne.csv', sep="\t", low_memory=False)
 films = films.drop(['Unnamed: 0', 'genres_x'], axis=1)
-
+films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
 # Chargement du modèle
 with open('modele_films_NN.pkl', 'rb') as f:
     model_charge = pickle.load(f)
 
-# Entrée utilisateur pour le titre du film
-film_cible = st.text_input('Rentrer un titre')
+if st.session_state.show_content:
+    # Entrée utilisateur pour le titre du film
+    film_cible = st.text_input('Rentrer un titre')
 
-# Initialisation des variables globales
-liste_image = []
-liste_id = []
-if film_cible:
-    film_cible_lower = film_cible.lower()
-    films['title'] = films['title'].apply(lambda x: x.lower())
+    # Initialisation des variables 
+    liste_image = []
+    liste_id = []
+    if film_cible:
+        film_cible_lower = film_cible.lower()
+        films['title'] = films['title'].apply(lambda x: x.lower())
 
-    if not films['title'].str.contains(film_cible_lower).any():
-        st.write(f"Le film '{film_cible}' n'est pas dans le dataset.")
-    else:
-        films_identiques = films['id_tmdb'][films['title'].str.contains(film_cible_lower)]
-        films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
+        if not films['title'].str.contains(film_cible_lower).any():
+            st.write(f"Le film '{film_cible}' n'est pas dans le dataset.")
+        else:
+            films_identiques = films['id_tmdb'][films['title'].str.contains(film_cible_lower)]
+                   
 
-        if st.session_state.show_content:
             for i in films_identiques.index:
-                link = films['poster_path'].loc[i]
-                liste_image.append(link)
-                liste_id.append(str(films['id_tmdb'].loc[i]))
-            
+                    link = films['poster_path'].loc[i]
+                    liste_image.append(link)
+                    liste_id.append(str(films['id_tmdb'].loc[i]))
+                
             clicked = custom_clickable_images(
-                liste_image,
-                titles=liste_id,
-                div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
-                img_style={"margin": "5px", "height": "200px"},
-            )
+                    liste_image,
+                    titles=liste_id,
+                    div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+                    img_style={"margin": "5px", "height": "200px"},
+                )
 
             st.session_state.clicked = clicked
             st.session_state.liste_id = liste_id
-            
+                
             if clicked != -1 and st.session_state.clicked != clicked:
             # Mettre à jour l'état et recharger immédiatement
             # st.session_state.clicked = clicked
@@ -77,7 +77,7 @@ if st.session_state.show_content == False :
     index_choisi = films[films['id_tmdb']==id].index
     index_choisi = index_choisi[0]
     chemin_image = film_choisi['poster_path'][index_choisi]          
-    
+    # st.write(chemin_image)
     resume = film_choisi['overview'][index_choisi]
     
     annee = film_choisi['year'][index_choisi]
@@ -106,7 +106,11 @@ if st.session_state.show_content == False :
     df_resultat = films.iloc[indices[0, 1:]].reset_index(drop=True)
     st.dataframe(film_choisi)
     st.dataframe(df_resultat)
-    #         # else:
-    #         #     st.text("Cliquer sur une image pour afficher la description du film et les films similaires")
+    
+    retour = st.button("revenir à l'accueil")
+    if retour:
+        st.session_state.show_content = True
+        st.session_state.clear()
+        st.rerun()  # Refresh immediately
 else:
         st.text("Veuillez saisir un titre")
