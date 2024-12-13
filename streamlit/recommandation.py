@@ -27,9 +27,7 @@ st.title('Bienvenue sur notre page de recommandation de films')
 films = pd.read_csv('./donnees/films_genre_colonne.csv', sep="\t", low_memory=False)
 films = films.drop(['Unnamed: 0', 'genres_x'], axis=1)
 films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
-# Chargement du modèle
-with open('modele_films_NN.pkl', 'rb') as f:
-    model_charge = pickle.load(f)
+
 
 if st.session_state.show_content:
     # Entrée utilisateur pour le titre du film
@@ -82,30 +80,62 @@ if st.session_state.show_content == False :
     
     annee = film_choisi['year'][index_choisi]
     
-
     col1, col2, col3 = st.columns(3)
     with col1:
         st.image(chemin_image, width=150)
     with col2:
         st.text(f"Résumé : {resume}")
     with col3:
-        st.text(f"Année de sortie : {annee}")
+        st.text(f"Année de sortie : {annee}")   
+    # Chargement des modèles
+    with open('modele_films_NN.pkl', 'rb') as f:
+        model_charge = pickle.load(f)
+    with open('modele_SN_normalisation.pkl', 'rb') as f:
+        SN_charge = pickle.load(f)
+        st.text('film choisi')
+        st.dataframe(film_choisi)
+
+        caract_film = film_choisi[['popularity','vote_average', 'genre_Drama', 'genre_Horror',
+                    'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
+                    'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
+                    'genre_Fantasy', 'genre_Comedy', 'genre_Music', 'genre_Romance',
+                    'genre_War', 'genre_Documentary', 'genre_History',
+                    'genre_Science Fiction']]
+        index = caract_film.index
+        caract_film_num = caract_film[['popularity',  'vote_average']]
+        caract_film_cat = caract_film[['genre_Drama', 'genre_Horror',
+                    'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
+                    'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
+                    'genre_Fantasy', 'genre_Comedy', 'genre_Music', 'genre_Romance',
+                    'genre_War', 'genre_Documentary', 'genre_History',
+                    'genre_Science Fiction']]
+                
+        # je normalise les infos numériques de mon film choisi et je cherche les films similaires
+        from sklearn.preprocessing import MinMaxScaler
+        
+        caract_film_num_SN = pd.DataFrame(SN_charge.transform(caract_film_num), columns=caract_film_num.columns, index=index)
+        caract_film_cat_dummies = pd.get_dummies(caract_film_cat)
+        caract_film_encoded = pd.concat([caract_film_num_SN, caract_film_cat_dummies], axis=1)
+        distances, indices = model_charge.kneighbors(caract_film_encoded)
+        df_resultat = films.iloc[indices[0,1:]].reset_index(drop=True)
+        
+        # st.text('caract_film_num')
+        # st.dataframe(caract_film_num)
+
+        # st.text(' caract_film_cat')
+        # st.dataframe( caract_film_cat)
 
 
-    caract_film = film_choisi[['popularity', 'vote_average', 'genre_Drama', 'genre_Horror',
-        'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
-        'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
-        'genre_Fantasy', 'genre_Comedy', 'genre_Music', 'genre_Romance',
-        'genre_War', 'genre_Documentary', 'genre_History',
-        'genre_Science Fiction']]
+        # st.text('caract_film_encoded')
+        # st.dataframe(caract_film_encoded)
+        
+        # st.text('distances, indices')
+        # st.write(distances, indices)
 
-    SN = MinMaxScaler()
-    caract_film_encoded = pd.DataFrame(SN.fit_transform(caract_film), columns=caract_film.columns)
-    distances, indices = model_charge.kneighbors(caract_film_encoded)
-
-    df_resultat = films.iloc[indices[0, 1:]].reset_index(drop=True)
-    st.dataframe(film_choisi)
-    st.dataframe(df_resultat)
+    
+        # st.text('df_resultat')
+        st.dataframe(df_resultat)
+    
     
     retour = st.button("revenir à l'accueil")
     if retour:
