@@ -9,10 +9,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 films = pd.read_csv("./donnees/films_genre_colonne.csv", sep='\t', low_memory=False)
-df_acteur_genre = pd.read_csv("./donnees/df_acteur_genre.csv", sep='\t', low_memory=False)
+df_acteur_genre = pd.read_csv("./donnees/df_acteur_genre (1).csv", sep='\t', low_memory=False)
 df_acteur_genre = df_acteur_genre.drop('Unnamed: 0',axis=1)
-df_acteur_genre.sort_values('nombre',ascending=False, inplace=True)
-df_acteur_genre = df_acteur_genre.head(50)
+acteur_nombre_films = pd.read_csv("./donnees/acteur_nombre_films.csv", sep='\t', low_memory=False)
+acteur_nombre_films = acteur_nombre_films.drop('Unnamed: 0',axis=1)
+#df_acteur_genre.sort_values('nombre',ascending=False, inplace=True)
+#df_acteur_genre = df_acteur_genre.head(50)
 budget = pd.read_csv("./donnees/budget.csv",low_memory=False)
 budget = budget.astype('int64')
                               
@@ -85,19 +87,36 @@ with st.sidebar:
 if selection == "Statistiques":
     st.write("Et si on faisait des graphiques amusants!")
 
-    liste = df_acteur_genre['acteur']
-    choix = st.selectbox('choisis ton acteur préféré:',liste)
-    acteur = df_acteur_genre[df_acteur_genre['acteur']==choix]
-    fig = px.bar(acteur, x='genre', y='nombre', hover_data=('genre','nombre'))
-    st.plotly_chart(fig,use_container_width=True)
+    acteur_cible = st.text_input('choisis ton acteur préféré')
+    if acteur_cible:
+        if not df_acteur_genre['acteur'].str.contains(acteur_cible,case=False).any():
+            st.write("ton acteur n'est pas ici, essaie un autre")
+        else:
+            acteur_pref = df_acteur_genre[df_acteur_genre['acteur'].str.contains(acteur_cible,case=False)]
+            #je choisi les acteurs uniques en les mettant dans une liste 
+            liste_acteur = acteur_pref['acteur'].unique().tolist()
+            acteur_choisi = st.selectbox('Choisis un acteur', options=liste_acteur)
+            data = df_acteur_genre[df_acteur_genre['acteur']==acteur_choisi]
+            fig = px.bar(data, x='genre', y='Nombre')
+            st.plotly_chart(fig,use_container_width=True)
 
-    # fig = px.scatter(df_acteur_genre, x='acteur', y='genre', size="nombre")
-    # st.plotly_chart(fig,use_container_width=True)
+    #graphique pour le nombre de fils par acteur
+    acteur_cible = st.text_input('choisis ton acteur préféré')
+    if acteur_cible:
+        if not df_acteur_genre['acteur'].str.contains(acteur_cible,case=False).any():
+            st.write("ton acteur n'est pas ici, essaie un autre")
+        else:
+            acteur_pref = df_acteur_genre[df_acteur_genre['acteur'].str.contains(acteur_cible,case=False)]
+            #je choisi les acteurs uniques en les mettant dans une liste 
+            liste_acteur = acteur_pref['acteur'].unique().tolist()
+            acteur_choisi = st.selectbox('Choisis un acteur', options=liste_acteur)
+            data = df_acteur_genre[df_acteur_genre['acteur']==acteur_choisi]
+            fig = px.bar(data, x='genre', y='Nombre')
+            st.plotly_chart(fig,use_container_width=True)
 
-    # st.area_chart(df_acteur_genre, x='acteur', y='nombre', color='genre')
 
-    #graphique pour le budget ax,min et moyen
-    #import plotly.figure_factory as ff
+
+            
     import plotly.graph_objects as go
     from plotly.subplots import make_subplots
     
