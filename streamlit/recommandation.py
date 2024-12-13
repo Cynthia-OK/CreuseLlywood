@@ -25,7 +25,9 @@ st.title('Bienvenue sur notre page de recommandation de films')
 
 # Chargement des données
 films = pd.read_csv('./donnees/films_genre_colonne.csv', sep="\t", low_memory=False)
+films_acteurs = pd.read_csv('./donnees/stat/df_films_liste_acteurs.csv', sep="\t", low_memory=False)
 films = films.drop(['Unnamed: 0', 'genres_x'], axis=1)
+films_acteurs = films_acteurs.drop(['Unnamed: 0'], axis=1)
 films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
 
 
@@ -143,22 +145,28 @@ if st.session_state.show_content == False :
     
         # st.text('df_resultat')
         # st.dataframe(df_resultat)  
+    df_affichage = pd.merge(df_resultat,
+                            films_acteurs,
+                            how='left',
+                            on = 'id_tmdb')
+    
+    # st.write(df_affichage)
+    
     bloc_films = st.container(border=True)
     bloc_films.header('Films similaires')
     col1, col2, col3 = bloc_films.columns(3)
     with col1:
         # st.write(df_resultat.iloc[0::3]['poster_path'].values)
         # st.image(liste_chemin[0::3], width=150)
-        for i in df_resultat.loc[0::3].index:
-            st.image(df_resultat.loc[i ,'poster_path'], width=200)
+        for i in df_affichage.loc[0::3].index:
+            st.image(df_affichage.loc[i ,'poster_path'], width=200)
             with st.popover("En savoir plus sur ce film"):
                 container = st.container(border=True)
-                # col1, col2 = container.columns(2)
-                # Récupérer le résumé à partir du DataFrame
-                resum = df_resultat.loc[i]['overview']
-                img = df_resultat.loc[i ,'poster_path']
-                titre = df_resultat.iloc[i]['title']
-                
+                resum = df_affichage.loc[i]['overview']
+                img = df_affichage.loc[i]['poster_path']
+                titre = df_affichage.iloc[i]['title']
+                acteurs = df_affichage.loc[i]['liste_acteurs']
+                                
                 info_html = f"""
                 <table>
                     <tr>
@@ -167,7 +175,11 @@ if st.session_state.show_content == False :
                     <tr>
                         <td style="width:50%">{resum}</td>
                         <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                    </tr>
                     <tr>
+                        <td colspan="2">{acteurs}</td>
+                    </tr>
+                    
                 </table>
                             """
 
@@ -183,9 +195,11 @@ if st.session_state.show_content == False :
                 container = st.container(border=True)
                 # col1, col2 = container.columns(2)
                 # Récupérer le résumé à partir du DataFrame
-                resum = df_resultat.loc[i]['overview']
-                img = df_resultat.loc[i ,'poster_path']
-                titre = df_resultat.iloc[i]['title']
+                resum = df_affichage.loc[i]['overview']
+                img = df_affichage.loc[i]['poster_path']
+                titre = df_affichage.iloc[i]['title']
+                acteurs = df_affichage.loc[i]['liste_acteurs']
+                
                 
                 info_html = f"""
                 <table>
@@ -195,7 +209,11 @@ if st.session_state.show_content == False :
                     <tr>
                         <td style="width:50%">{resum}</td>
                         <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                    </tr>
                     <tr>
+                        <td colspan="2">{acteurs}</td>
+                    </tr>
+                    
                 </table>
                             """
 
@@ -208,9 +226,11 @@ if st.session_state.show_content == False :
                 container = st.container(border=True)
                 # col1, col2 = container.columns(2)
                 # Récupérer le résumé à partir du DataFrame
-                resum = df_resultat.loc[i]['overview']
-                img = df_resultat.loc[i ,'poster_path']
-                titre = df_resultat.iloc[i]['title']
+                resum = df_affichage.loc[i]['overview']
+                img = df_affichage.loc[i]['poster_path']
+                titre = df_affichage.iloc[i]['title']
+                acteurs = df_affichage.loc[i]['liste_acteurs']
+                
                 
                 info_html = f"""
                 <table>
@@ -220,7 +240,10 @@ if st.session_state.show_content == False :
                     <tr>
                         <td style="width:50%">{resum}</td>
                         <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                    </tr>
                     <tr>
+                        <td colspan="2">{acteurs}</td>
+                    </tr>
                 </table>
                             """
 
@@ -235,5 +258,5 @@ if st.session_state.show_content == False :
         st.session_state.show_content = True
         st.session_state.clear()
         st.rerun()  # Refresh immediately
-else:
-        st.text("Veuillez saisir un titre")
+# else:
+#         st.text("Veuillez saisir un titre")

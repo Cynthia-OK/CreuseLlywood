@@ -80,5 +80,5 @@ if film_cible:
             st.dataframe(df_resultat)
         else:
             st.text("Cliquer sur une image pour afficher la description du film et les films similaires")
-else:
-    st.text('Veuillez saisir un titre')
+# else:
+#     st.text('Veuillez saisir un titre')
