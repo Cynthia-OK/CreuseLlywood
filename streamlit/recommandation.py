@@ -77,10 +77,18 @@ if st.session_state.show_content == False :
     chemin_image = film_choisi['poster_path'][index_choisi]          
     # st.write(chemin_image)
     resume = film_choisi['overview'][index_choisi]
-    
+    titre = film_choisi['title'][index_choisi]
     annee = film_choisi['year'][index_choisi]
     
-    col1, col2, col3 = st.columns(3)
+    film_select = st.container(border=True)
+    
+    col1, col2 = film_select.columns(2)
+    with col1:
+        film_select.header("Vous avez sélectionné : ")
+    with col2:
+        film_select.subheader(titre)
+    
+    col1, col2, col3 = film_select.columns(3)
     with col1:
         st.image(chemin_image, width=150)
     with col2:
@@ -92,8 +100,8 @@ if st.session_state.show_content == False :
         model_charge = pickle.load(f)
     with open('modele_SN_normalisation.pkl', 'rb') as f:
         SN_charge = pickle.load(f)
-        st.text('film choisi')
-        st.dataframe(film_choisi)
+        # st.text('film choisi')
+        # st.dataframe(film_choisi)
 
         caract_film = film_choisi[['popularity','vote_average', 'genre_Drama', 'genre_Horror',
                     'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
@@ -134,10 +142,95 @@ if st.session_state.show_content == False :
 
     
         # st.text('df_resultat')
-        st.dataframe(df_resultat)
+        # st.dataframe(df_resultat)  
+    bloc_films = st.container(border=True)
+    bloc_films.header('Films similaires')
+    col1, col2, col3 = bloc_films.columns(3)
+    with col1:
+        # st.write(df_resultat.iloc[0::3]['poster_path'].values)
+        # st.image(liste_chemin[0::3], width=150)
+        for i in df_resultat.loc[0::3].index:
+            st.image(df_resultat.loc[i ,'poster_path'], width=200)
+            with st.popover("En savoir plus sur ce film"):
+                container = st.container(border=True)
+                # col1, col2 = container.columns(2)
+                # Récupérer le résumé à partir du DataFrame
+                resum = df_resultat.loc[i]['overview']
+                img = df_resultat.loc[i ,'poster_path']
+                titre = df_resultat.iloc[i]['title']
+                
+                info_html = f"""
+                <table>
+                    <tr>
+                        <th colspan="2">{titre}</th>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">{resum}</td>
+                        <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                    <tr>
+                </table>
+                            """
+
+                # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
+                container.markdown(info_html, unsafe_allow_html=True)
+        # with st.expander("Cliquez ici pour voir plus d'informations"):
+        
+    with col2:
+        # st.write(df_resultat.iloc[1::3]['poster_path'])
+        for i in df_resultat.loc[1::3].index:
+            st.image(df_resultat.loc[i ,'poster_path'], width=200)
+            with st.popover("En savoir plus sur ce film"):
+                container = st.container(border=True)
+                # col1, col2 = container.columns(2)
+                # Récupérer le résumé à partir du DataFrame
+                resum = df_resultat.loc[i]['overview']
+                img = df_resultat.loc[i ,'poster_path']
+                titre = df_resultat.iloc[i]['title']
+                
+                info_html = f"""
+                <table>
+                    <tr>
+                        <th colspan="2">{titre}</th>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">{resum}</td>
+                        <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                    <tr>
+                </table>
+                            """
+
+                # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
+                container.markdown(info_html, unsafe_allow_html=True)
+    with col3:
+        for i in df_resultat.loc[2::3].index:
+            st.image(df_resultat.loc[i ,'poster_path'], width=200)
+            with st.popover("En savoir plus sur ce film"):
+                container = st.container(border=True)
+                # col1, col2 = container.columns(2)
+                # Récupérer le résumé à partir du DataFrame
+                resum = df_resultat.loc[i]['overview']
+                img = df_resultat.loc[i ,'poster_path']
+                titre = df_resultat.iloc[i]['title']
+                
+                info_html = f"""
+                <table>
+                    <tr>
+                        <th colspan="2">{titre}</th>
+                    </tr>
+                    <tr>
+                        <td style="width:50%">{resum}</td>
+                        <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                    <tr>
+                </table>
+                            """
+
+                # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
+                container.markdown(info_html, unsafe_allow_html=True)
+     
     
+      
     
-    retour = st.button("revenir à l'accueil")
+    retour = st.button("Revenir à la recherche")
     if retour:
         st.session_state.show_content = True
         st.session_state.clear()
