@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from st_clickable_images import clickable_images
 import pickle
 
+
 # Initialisation des états de session
 if "show_content" not in st.session_state:
     st.session_state.show_content = True
@@ -165,7 +166,8 @@ if st.session_state.show_content == False :
                 resum = df_affichage.loc[i]['overview']
                 img = df_affichage.loc[i]['poster_path']
                 titre = df_affichage.iloc[i]['title']
-                acteurs = df_affichage.loc[i]['liste_acteurs']
+                acteurs = str(df_affichage.loc[i]['liste_acteurs'])
+                acteurs = acteurs.replace('[','').replace("'","")
                                 
                 info_html = f"""
                 <table>
@@ -174,10 +176,10 @@ if st.session_state.show_content == False :
                     </tr>
                     <tr>
                         <td style="width:50%">{resum}</td>
-                        <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                        <td style="width:50%"><p style="text-align:center"><img src={img} alt={titre} style="width:200px; "></p></td>
                     </tr>
                     <tr>
-                        <td colspan="2">{acteurs}</td>
+                        <td colspan="2"><p style="font-weight:bold; text-decoration:underline;"> Acteurs :</p> {acteurs}</td>
                     </tr>
                     
                 </table>
@@ -198,9 +200,9 @@ if st.session_state.show_content == False :
                 resum = df_affichage.loc[i]['overview']
                 img = df_affichage.loc[i]['poster_path']
                 titre = df_affichage.iloc[i]['title']
-                acteurs = df_affichage.loc[i]['liste_acteurs']
-                
-                
+                acteurs = str(df_affichage.loc[i]['liste_acteurs'])
+                acteurs = acteurs.replace('[','').replace("'","")
+                                
                 info_html = f"""
                 <table>
                     <tr>
@@ -208,10 +210,10 @@ if st.session_state.show_content == False :
                     </tr>
                     <tr>
                         <td style="width:50%">{resum}</td>
-                        <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                        <td style="width:50%"><p style="text-align:center"><img src={img} alt={titre} style="width:200px; "></p></td>
                     </tr>
                     <tr>
-                        <td colspan="2">{acteurs}</td>
+                        <td colspan="2"><p style="font-weight:bold; text-decoration:underline;"> Acteurs :</p> {acteurs}</td>
                     </tr>
                     
                 </table>
@@ -229,9 +231,9 @@ if st.session_state.show_content == False :
                 resum = df_affichage.loc[i]['overview']
                 img = df_affichage.loc[i]['poster_path']
                 titre = df_affichage.iloc[i]['title']
-                acteurs = df_affichage.loc[i]['liste_acteurs']
-                
-                
+                acteurs = str(df_affichage.loc[i]['liste_acteurs'])
+                acteurs = acteurs.replace('[','').replace("'","")
+                                
                 info_html = f"""
                 <table>
                     <tr>
@@ -239,11 +241,12 @@ if st.session_state.show_content == False :
                     </tr>
                     <tr>
                         <td style="width:50%">{resum}</td>
-                        <td style="width:50%"><img src={img} alt={titre} style="width:200px;"></td>
+                        <td style="width:50%"><p style="text-align:center"><img src={img} alt={titre} style="width:200px; "></p></td>
                     </tr>
                     <tr>
-                        <td colspan="2">{acteurs}</td>
+                        <td colspan="2"><p style="font-weight:bold; text-decoration:underline;"> Acteurs :</p> {acteurs}</td>
                     </tr>
+                    
                 </table>
                             """
 
@@ -258,5 +261,4 @@ if st.session_state.show_content == False :
         st.session_state.show_content = True
         st.session_state.clear()
         st.rerun()  # Refresh immediately
-# else:
-#         st.text("Veuillez saisir un titre")
+
