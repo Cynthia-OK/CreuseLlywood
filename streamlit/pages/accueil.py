@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
 st.title("Bienvenue sur notre application de recommandation de films")
 
@@ -7,29 +8,24 @@ st.title("Bienvenue sur notre application de recommandation de films")
 # Ne marche pas : st.write_stream('Notre application vous permet de rechercher un film selon un directeur, un acteur, un film ...' )
 
 
+col1,col2,col3 =st.columns([0.2, 0.6, 0.2])
+with col1:
+    st.write("")
+with col2:
+    st.image("streamlit\images\image_avec_texte.png", width=500)
+with col3:
+    st.write("")
 
+st.link_button("Par film", "./recommandation", use_container_width = True)
 
-# pages = {
-#     "Accueil" : [
-#         st.Page("./accueil.py", title="Accueil", icon="🏠"),
-#         ],
-#     "Statistiques": [
-#         st.Page("./pages/statistiques.py", title="Page de statistiques", icon="📊"),
-#     ],
-#     "Recommandations": [
-#         st.Page("./pages/recommandation.py", title="Recherche de films similaires par titre", icon="🎞️"),
-#         st.Page("./pages/recherche_directeur.py", title="Recherche de films par directeur", icon="📽️"),
-#         st.Page("./pages/recherche_acteur.py", title="Recherche de films par acteur", icon="🎭"),
-#         st.Page("./pages/recherche_genre.py", title="Recherche de films par genre", icon="💥"),
-#         st.Page("./pages/recherche_annee.py", title="Recherche de films par année", icon="📅"),
-        
-#     ],
-# }
+col1,col2 =st.columns(2)
+with col1:
+    st.link_button("Par directeur", "./recherche_directeur", use_container_width = True)
+    st.link_button("Par acteur", "./recherche_acteur", use_container_width = True)
+with col2:
+    st.link_button("Par genre", "./recherche_genre", use_container_width = True)
+    st.link_button("Par année", "./recherche_annee", use_container_width = True)
 
-# pg = st.navigation(pages)
-# pg.run()
-
-st.image("dossier_a_ignorer\images\image_avec_texte.png")
 
 # # Fonction pour lire le contenu HTML
 # def lire_html(fichier):
