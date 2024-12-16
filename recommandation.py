@@ -16,7 +16,8 @@ acteur_nombre_films = acteur_nombre_films.drop('Unnamed: 0',axis=1)
 #df_acteur_genre.sort_values('nombre',ascending=False, inplace=True)
 #df_acteur_genre = df_acteur_genre.head(50)
 budget = pd.read_csv("./donnees/budget.csv",low_memory=False)
-budget = budget.astype('int64')
+revenue = pd.read_csv("./donnees/revenue.csv",low_memory=False)
+#budget = budget.astype('int64')
                               
 # Charger le modèle
 import pickle
@@ -78,6 +79,27 @@ def films_similaires(tmdb):
 
 st.header('Bienvuenu sur notre site de recommandation de films')
 
+st.markdown("""
+    <style>
+    .stat-container {
+        background-image: url('https://img.freepik.com/photos-gratuite/cinema-3d-equipement-lie-isole-blanc_1048-5039.jpg?t=st=1734365147~exp=1734368747~hmac=824650e9b95ed8dfc08cfb7dcbcf1fb29a3f98fc597d3065d50ef21ea2914388&w=826');  /* URL de votre image */
+        background-size: cover;  /* L'image couvre toute la zone */
+        background-position: center center;  /* Centre l'image */
+        padding: 20px;  /* Ajoute un peu de padding autour du contenu */
+        border-radius: 10px;  /* Bord arrondi (optionnel) */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Contenu de votre section statistique avec le fond d'écran
+with st.container():
+    st.markdown('<div class="stat-container">', unsafe_allow_html=True)
+    st.subheader('Statistiques')
+    st.write('Ici, vous pouvez afficher vos données statistiques.')
+    # Ajoutez ici vos graphiques et autres éléments
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
 with st.sidebar:
    selection = option_menu(
             menu_title=None,
@@ -87,7 +109,7 @@ with st.sidebar:
 if selection == "Statistiques":
     st.write("Et si on faisait des graphiques amusants!")
 
-    acteur_cible = st.text_input('choisis ton acteur préféré')
+    acteur_cible = st.text_input(' 🔍 choisis ton acteur préféré')
     if acteur_cible:
         if not df_acteur_genre['acteur'].str.contains(acteur_cible,case=False).any():
             st.write("ton acteur n'est pas ici, essaie un autre")
@@ -97,61 +119,67 @@ if selection == "Statistiques":
             liste_acteur = acteur_pref['acteur'].unique().tolist()
             acteur_choisi = st.selectbox('Choisis un acteur', options=liste_acteur)
             data = df_acteur_genre[df_acteur_genre['acteur']==acteur_choisi]
-            fig = px.bar(data, x='genre', y='Nombre')
-            st.plotly_chart(fig,use_container_width=True)
+            # affichage graphique et métrique
+            col1, col2 = st.columns([2, 1])
+            with col1:
+                fig = px.bar(data, x='genre', y='Nombre', title="Le nombre de films par genre")
+                st.plotly_chart(fig,use_container_width=True)
+            #nombre total de films par l'acteur choisi
+            with col2:
+                if acteur_choisi in acteur_nombre_films['acteur'].values:
+                    totals_films = acteur_nombre_films[acteur_nombre_films['acteur']==acteur_choisi]['nombre'].values[0]
+                else:
+                    totals_films = 0
+                st.metric(" 🎬 Nombre total de films ", totals_films)
+    #graphique sur ladurée des films
+films.sort_values('year',ascending=True, inplace=True)
+fig = px.histogram(films, x='runtime' , title='Duréee des films aux fils des années', animation_frame = 'year')
+fig.update_layout(bargap=0.2)
+fig.update_yaxes(range=[0,100])
+st.plotly_chart(fig)
 
-    #graphique pour le nombre de fils par acteur
-    acteur_cible = st.text_input('choisis ton acteur préféré')
-    if acteur_cible:
-        if not df_acteur_genre['acteur'].str.contains(acteur_cible,case=False).any():
-            st.write("ton acteur n'est pas ici, essaie un autre")
-        else:
-            acteur_pref = df_acteur_genre[df_acteur_genre['acteur'].str.contains(acteur_cible,case=False)]
-            #je choisi les acteurs uniques en les mettant dans une liste 
-            liste_acteur = acteur_pref['acteur'].unique().tolist()
-            acteur_choisi = st.selectbox('Choisis un acteur', options=liste_acteur)
-            data = df_acteur_genre[df_acteur_genre['acteur']==acteur_choisi]
-            fig = px.bar(data, x='genre', y='Nombre')
-            st.plotly_chart(fig,use_container_width=True)
+#graphique sur le budget
+import plotly.graph_objects as go
+fig = go.Figure()
+
+# Ajouter les barres pour le budget maximum
+fig.add_trace(go.Bar(
+    x=budget['year'],
+    y=budget['budget_max'],
+    name='Budget Max',
+    marker_color='blue'  # Couleur des barres
+))
+# Ajouter la courbe pour le budget moyen
+fig.add_trace(go.Scatter(
+    x=budget['year'],
+    y=budget['budget_moyen'],
+    name='Budget Moyen',
+    mode='lines+markers',  # Ligne avec des marqueurs
+    line=dict(color='red', width=3),  # Couleur et largeur de la ligne
+    marker=dict(symbol='circle', size=8)  # Personnalisation des marqueurs
+))
+fig.update_layout(
+    title='Budget Max vs Budget Moyen par Année',
+    xaxis_title='Année',
+    yaxis_title='Montant du Budget (en millions)',
+    barmode='group',  # Mode de regroupement des barres
+)
+# fig= px.bar(budget,x='year', y=['budget_max','budget_moyen'],title='Budget max et moyen par année')
+st.plotly_chart(fig)
+
+#graphique sur le revenue
+fig= px.line(revenue,x='year', y=['revenu_max','revenu_moyen'],title='Revenu max et moyen par année')
+st.plotly_chart(fig)
 
 
 
-            
-    import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
-    
-    #group_labels = ['max', 'min', 'moyen']
-    #fig = px.histogram(budget, x='budget_max', y='budget_min', color='budget_moyen')
-    #fig = px.histogram(budget, x='year', y='budget_min')
-    fig  =  make_subplots ( specs = [[{ "secondary_y" :  True }]])
 
-    fig . add_trace ( 
-    go . Scatter ( x = budget['year'],  y = budget['budget_max'],  name = "max" ), 
-    secondary_y = False , )
-
-    fig . add_trace ( 
-    go . Scatter ( x = budget['year'],  y = budget['budget_moyen'],  name = "moyen" ), 
-    secondary_y = True , )
-
-    st.plotly_chart(fig,use_container_width=True)
-    
-    #le graphique du revenue
-    revenue = pd.read_csv("./donnees/revenue.csv",low_memory=False)
-    fig  =  make_subplots ( specs = [[{ "secondary_y" :  True }]])
-
-    fig . add_trace ( 
-    go . Scatter ( x = revenue['year'],  y = revenue['revenu_max'],  name = "max" ), 
-    secondary_y = False , )
-
-    fig . add_trace ( 
-    go . Scatter ( x = revenue['year'],  y = revenue['revenu_moyen'],  name = "moyen" ), 
-    secondary_y = True , )
-
-    st.plotly_chart(fig,use_container_width=True)
+# Ajout du CSS personnalisé pour définir un fond d'écran
 
 
 
-elif selection == "films":
+
+if selection == "films":
     st.write("Bienvenue sur mon site de recommandation")
     st.text_input('Mets ici ton titre de film préféré')
     st.checkbox('Appuis maintenant ici')
