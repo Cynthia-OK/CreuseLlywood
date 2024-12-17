@@ -167,7 +167,7 @@ if st.session_state.show_content == False :
                 img = df_affichage.loc[i]['poster_path']
                 titre = df_affichage.iloc[i]['title']
                 acteurs = str(df_affichage.loc[i]['liste_acteurs'])
-                acteurs = acteurs.replace('[','').replace("'","")
+                acteurs = acteurs.replace('[','').replace("'","").replace("]","")
                                 
                 info_html = f"""
                 <table>
