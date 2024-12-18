@@ -79,17 +79,16 @@ def films_similaires(tmdb):
 
 st.header('Bienvuenu sur notre site de recommandation de films')
 
-st.markdown("""
+st.markdown(
+    """
     <style>
-    .stat-container {
-        background-image: url('https://img.freepik.com/photos-gratuite/cinema-3d-equipement-lie-isole-blanc_1048-5039.jpg?t=st=1734365147~exp=1734368747~hmac=824650e9b95ed8dfc08cfb7dcbcf1fb29a3f98fc597d3065d50ef21ea2914388&w=826');  /* URL de votre image */
-        background-size: cover;  /* L'image couvre toute la zone */
-        background-position: center center;  /* Centre l'image */
-        padding: 20px;  /* Ajoute un peu de padding autour du contenu */
-        border-radius: 10px;  /* Bord arrondi (optionnel) */
+    .reportview-container {
+        background: url("https://media.istockphoto.com/id/1191001701/fr/photo/pop-corn-et-clapperboard.jpg?s=612x612&w=0&k=20&c=AHQ7hOMdCMRfAya18h3rznNEflqmFS3Q90UznAbNfzM=");
     }
-    </style>
-    """, unsafe_allow_html=True)
+   </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Contenu de votre section statistique avec le fond d'écran
 with st.container():
@@ -174,8 +173,10 @@ st.plotly_chart(fig)
 
 
 
-# Ajout du CSS personnalisé pour définir un fond d'écran
-
+# graphique sur le profit
+profit = pd.read_csv("./donnees/profit.csv")
+fig= px.line(profit,x='year', y=['profit_max','profit_moyen'],title='profit max et moyen par année')
+st.plotly_chart(fig)
 
 
 
