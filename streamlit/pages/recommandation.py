@@ -99,9 +99,9 @@ if st.session_state.show_content == False :
     with col3:
         st.text(f"Année de sortie : {annee}")   
     # Chargement des modèles
-    with open('modele_films_NN.pkl', 'rb') as f:
+    with open('modeles\modele_films_NN.pkl', 'rb') as f:
         model_charge = pickle.load(f)
-    with open('modele_SN_normalisation.pkl', 'rb') as f:
+    with open('modeles\modele_SN_normalisation.pkl', 'rb') as f:
         SN_charge = pickle.load(f)
         # st.text('film choisi')
         # st.dataframe(film_choisi)
