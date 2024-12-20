@@ -15,8 +15,8 @@ if "clicked" not in st.session_state:
 def custom_clickable_images(liste_image, titles=None, div_style={}, img_style={}):
   clicked_index = clickable_images(liste_image, titles=titles, div_style=div_style, img_style=img_style)
   if clicked_index != -1:
-    st.session_state.show_content = False  # Hide content immediately
-    st.session_state.clicked = clicked_index  # Update clicked state
+    st.session_state.show_content = False  # Cacher le contenu
+    st.session_state.clicked = clicked_index  # Update clicked dans etat de session
     st.rerun()  # Refresh immediately
   return clicked_index
 
@@ -25,11 +25,10 @@ def custom_clickable_images(liste_image, titles=None, div_style={}, img_style={}
 st.title('Bienvenue sur notre page de recommandation de films')
 
 # Chargement des données
-films = pd.read_csv('./donnees/films_genre_colonne.csv', sep="\t", low_memory=False)
-films_acteurs = pd.read_csv('./donnees/stat/df_films_liste_acteurs.csv', sep="\t", low_memory=False)
-films = films.drop(['Unnamed: 0', 'genres_x'], axis=1)
-films_acteurs = films_acteurs.drop(['Unnamed: 0'], axis=1)
-films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
+films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
+# films_acteurs = pd.read_csv('./donnees/films_selectionnes_avec_acteurs.csv', sep="\t", low_memory=False)
+
+
 
 
 if st.session_state.show_content:
@@ -65,8 +64,6 @@ if st.session_state.show_content:
             st.session_state.liste_id = liste_id
                 
             if clicked != -1 and st.session_state.clicked != clicked:
-            # Mettre à jour l'état et recharger immédiatement
-            # st.session_state.clicked = clicked
                 st.session_state.show_content = False  # Masquer le contenu
 
 if st.session_state.show_content == False :
@@ -99,9 +96,9 @@ if st.session_state.show_content == False :
     with col3:
         st.text(f"Année de sortie : {annee}")   
     # Chargement des modèles
-    with open('modeles\modele_films_NN.pkl', 'rb') as f:
+    with open('./modeles/modele_films_NN.pkl', 'rb') as f:
         model_charge = pickle.load(f)
-    with open('modeles\modele_SN_normalisation.pkl', 'rb') as f:
+    with open('./modeles/modele_SN_normalisation.pkl', 'rb') as f:
         SN_charge = pickle.load(f)
         # st.text('film choisi')
         # st.dataframe(film_choisi)
@@ -128,6 +125,9 @@ if st.session_state.show_content == False :
         caract_film_cat_dummies = pd.get_dummies(caract_film_cat)
         caract_film_encoded = pd.concat([caract_film_num_SN, caract_film_cat_dummies], axis=1)
         distances, indices = model_charge.kneighbors(caract_film_encoded)
+        # st.write(indices)
+        # st.write(indices[0,1:])
+        # st.write(films.iloc[161])
         df_resultat = films.iloc[indices[0,1:]].reset_index(drop=True)
         
         # st.text('caract_film_num')
@@ -146,10 +146,10 @@ if st.session_state.show_content == False :
     
         # st.text('df_resultat')
         # st.dataframe(df_resultat)  
-    df_affichage = pd.merge(df_resultat,
-                            films_acteurs,
-                            how='left',
-                            on = 'id_tmdb')
+    # df_affichage = pd.merge(df_resultat,
+    #                         films_acteurs,
+    #                         how='left',
+    #                         on = 'id_tmdb')
     
     # st.write(df_affichage)
     
@@ -159,14 +159,14 @@ if st.session_state.show_content == False :
     with col1:
         # st.write(df_resultat.iloc[0::3]['poster_path'].values)
         # st.image(liste_chemin[0::3], width=150)
-        for i in df_affichage.loc[0::3].index:
-            st.image(df_affichage.loc[i ,'poster_path'], width=200)
+        for i in df_resultat.loc[0::3].index:
+            st.image(df_resultat.loc[i ,'poster_path'], width=200)
             with st.popover("En savoir plus sur ce film"):
                 container = st.container(border=True)
-                resum = df_affichage.loc[i]['overview']
-                img = df_affichage.loc[i]['poster_path']
-                titre = df_affichage.iloc[i]['title']
-                acteurs = str(df_affichage.loc[i]['liste_acteurs'])
+                resum = df_resultat.loc[i]['overview']
+                img = df_resultat.loc[i]['poster_path']
+                titre = df_resultat.iloc[i]['title']
+                acteurs = str(df_resultat.loc[i]['liste_acteurs'])
                 acteurs = acteurs.replace('[','').replace("'","").replace("]","")
                                 
                 info_html = f"""
@@ -197,10 +197,10 @@ if st.session_state.show_content == False :
                 container = st.container(border=True)
                 # col1, col2 = container.columns(2)
                 # Récupérer le résumé à partir du DataFrame
-                resum = df_affichage.loc[i]['overview']
-                img = df_affichage.loc[i]['poster_path']
-                titre = df_affichage.iloc[i]['title']
-                acteurs = str(df_affichage.loc[i]['liste_acteurs'])
+                resum = df_resultat.loc[i]['overview']
+                img = df_resultat.loc[i]['poster_path']
+                titre = df_resultat.iloc[i]['title']
+                acteurs = str(df_resultat.loc[i]['liste_acteurs'])
                 acteurs = acteurs.replace('[','').replace("'","")
                                 
                 info_html = f"""
@@ -228,10 +228,10 @@ if st.session_state.show_content == False :
                 container = st.container(border=True)
                 # col1, col2 = container.columns(2)
                 # Récupérer le résumé à partir du DataFrame
-                resum = df_affichage.loc[i]['overview']
-                img = df_affichage.loc[i]['poster_path']
-                titre = df_affichage.iloc[i]['title']
-                acteurs = str(df_affichage.loc[i]['liste_acteurs'])
+                resum = df_resultat.loc[i]['overview']
+                img = df_resultat.loc[i]['poster_path']
+                titre = df_resultat.iloc[i]['title']
+                acteurs = str(df_resultat.loc[i]['liste_acteurs'])
                 acteurs = acteurs.replace('[','').replace("'","")
                                 
                 info_html = f"""

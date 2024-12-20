@@ -4,9 +4,8 @@ st.title("Bienvenue sur notre page de recherche par genre")
 
 
 # Chargement des données
-films = pd.read_csv('./donnees/films_genre_colonne.csv', sep="\t", low_memory=False)
-films = films.drop(['Unnamed: 0', 'genres_x'], axis=1)
-films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
+films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
+
 
 # st.dataframe(films)
 liste_genres = ['Comedy', 'Thriller', 'Mystery',
@@ -14,32 +13,14 @@ liste_genres = ['Comedy', 'Thriller', 'Mystery',
        'Fantasy', 'Animation', 'Science Fiction',
        'Family', 'Adventure', 'Romance', 'Crime',
        'Documentary', 'History', 'Action', 'Western']
-# st.write('choisir le genre')
-# comedy = st.checkbox('Comedie')
-# thriller = st.checkbox('Thriller')
-# mystery = st.checkbox('Mystery')
-# drama = st.checkbox('Drama')
-# war = st.checkbox('War')
-# music = st.checkbox('Music')
-# horror = st.checkbox('Horror')
-# fantasy = st.checkbox('Fantasy')
-# animation = st.checkbox('Animation')
-# sf = st.checkbox('Science Fiction')
-# family = st.checkbox('Family')
-# adventure = st.checkbox('Adventure')
-# romance = st.checkbox('Romance')
-# crime = st.checkbox('Crime')
-# documentary = st.checkbox('Documentary')
-# history = st.checkbox('History')
-# action = st.checkbox('Action')
-# western = st.checkbox('Western')
+
 
 
 genre_choisi = st.multiselect('choisir un genre', liste_genres, max_selections=4)
 # st.write('max 3 genres')
 
 # on cherche les films du genre choisi
-if len(genre_choisi) == 0:
+if len(genre_choisi) == 0 or len(genre_choisi) > 3 :
     st.text('Veuillez choisir entre 1 et 3 genres')
 else :
     if len(genre_choisi) == 1:
@@ -74,6 +55,8 @@ else :
                                             'genres': genres}])
             films_selection = pd.concat([films_selection, new_row],
                                                 ignore_index=True)
+    # st.write(f'len selection : {len(films_selection)}')
+    
     if len(films_selection) == 0 and len(genre_choisi)>0 :
         st.text("Aucun film ne correspond à ces genres")
     elif len(films_selection) >0 :
@@ -84,7 +67,7 @@ else :
         # st.dataframe(films_selection)
         if len(films_selection) < 4 :
             n = len(films_selection)
-        if len(films_selection) >24 :
+        elif len(films_selection) >24 :
             n = 24
         else :
         # L'utilisateur choisit le nombre de films à afficher s'il y a plus de 3 films

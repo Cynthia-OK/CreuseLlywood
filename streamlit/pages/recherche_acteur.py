@@ -2,11 +2,8 @@ import streamlit as st
 import pandas as pd
 st.title("Bienvenue sur notre page de recherche par acteur")
 # Chargement des données
-films = pd.read_csv('./donnees/films_genre_colonne.csv', sep="\t", low_memory=False)
+films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
 acteurs_liste_films = pd.read_csv('./donnees/stat/df_acteurs_liste_films.csv', sep="\t", low_memory=False)
-films = films.drop(['Unnamed: 0', 'genres_x'], axis=1)
-acteurs_liste_films = acteurs_liste_films.drop(['Unnamed: 0'], axis=1)
-films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
 
 #on met les noms en minuscule
 acteurs_liste_films['acteur_lower'] = acteurs_liste_films['acteur'].apply(lambda x: x.lower())

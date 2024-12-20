@@ -4,11 +4,8 @@ st.title("Bienvenue sur notre page de recherche par directeur")
 
 
 # Chargement des données
-films = pd.read_csv('./donnees/films_genre_colonne.csv', sep="\t", low_memory=False)
+films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
 directeur_liste_films = pd.read_csv('./donnees/stat/df_directeur_liste_films.csv', sep="\t", low_memory=False)
-films = films.drop(['Unnamed: 0', 'genres_x'], axis=1)
-directeur_liste_films = directeur_liste_films.drop(['Unnamed: 0'], axis=1)
-films['poster_path'] = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + films['poster_path']
 
 # st.dataframe(directeur_liste_films)
 #on met les noms en minuscule
