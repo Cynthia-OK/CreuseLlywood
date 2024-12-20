@@ -75,11 +75,22 @@ if st.session_state.show_content == False :
     index_choisi = films[films['id_tmdb']==id].index
     index_choisi = index_choisi[0]
     chemin_image = film_choisi['poster_path'][index_choisi]          
-    # st.write(chemin_image)
+    # st.write(film_choisi)
     resume = film_choisi['overview'][index_choisi]
     titre = film_choisi['title'][index_choisi]
     annee = film_choisi['year'][index_choisi]
-    
+    note = film_choisi['vote_average'][index_choisi]
+    directeurs = film_choisi['liste_directeurs_noms'][index_choisi]
+    directeurs = directeurs.replace("[","").replace("]","").replace("'","")
+    acteurs = film_choisi['liste_acteurs_noms'][index_choisi]
+    acteurs = acteurs.replace("[","").replace("]","").replace("'","")
+    genres = film_choisi['genres'][index_choisi]
+    genres = genres.replace("[","").replace("]","").replace("'","")
+    duree = film_choisi['runtime'][index_choisi]
+    # st.write(directeurs)
+    # st.write(acteurs)
+    # st.write(genres)
+    # st.write(duree)
     film_select = st.container(border=True)
     
     col1, col2 = film_select.columns(2)
@@ -95,6 +106,8 @@ if st.session_state.show_content == False :
         st.text(f"Résumé : {resume}")
     with col3:
         st.text(f"Année de sortie : {annee}")   
+        st.text(f"Acteurs : {acteurs}")   
+        st.text(f"Directeurs : {directeurs}") 
     # Chargement des modèles
     with open('./modeles/modele_films_NN.pkl', 'rb') as f:
         model_charge = pickle.load(f)
@@ -166,7 +179,7 @@ if st.session_state.show_content == False :
                 resum = df_resultat.loc[i]['overview']
                 img = df_resultat.loc[i]['poster_path']
                 titre = df_resultat.iloc[i]['title']
-                acteurs = str(df_resultat.loc[i]['liste_acteurs'])
+                acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
                 acteurs = acteurs.replace('[','').replace("'","").replace("]","")
                                 
                 info_html = f"""
@@ -200,7 +213,7 @@ if st.session_state.show_content == False :
                 resum = df_resultat.loc[i]['overview']
                 img = df_resultat.loc[i]['poster_path']
                 titre = df_resultat.iloc[i]['title']
-                acteurs = str(df_resultat.loc[i]['liste_acteurs'])
+                acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
                 acteurs = acteurs.replace('[','').replace("'","")
                                 
                 info_html = f"""
@@ -231,7 +244,7 @@ if st.session_state.show_content == False :
                 resum = df_resultat.loc[i]['overview']
                 img = df_resultat.loc[i]['poster_path']
                 titre = df_resultat.iloc[i]['title']
-                acteurs = str(df_resultat.loc[i]['liste_acteurs'])
+                acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
                 acteurs = acteurs.replace('[','').replace("'","")
                                 
                 info_html = f"""
