@@ -38,7 +38,8 @@ if directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower)
             # st.write(liste)
 
             #créer un DataFrame vide pour stocker les infos sur les films de la liste
-            films_selection = pd.DataFrame(columns=['id_tmdb','overview','poster','title','note'])
+            films_selection = pd.DataFrame(columns=['id_tmdb','overview','poster','title','note','annee',
+                                         'acteurs','directeurs','genres','duree'])
             #on parcourt la liste et on remplit le DataFrame           
             for i in liste:
                 # st.write(i)
@@ -48,13 +49,21 @@ if directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower)
                 title = films['title'].loc[films['id_tmdb']== i].iloc[0]
                 note = films['vote_average'].loc[films['id_tmdb']== i].iloc[0]
                 annee = films['year'].loc[films['id_tmdb']== i].iloc[0]
+                acteurs = films['liste_acteurs_noms'].loc[films['id_tmdb']== i].iloc[0]
+                directeurs = films['liste_directeurs_noms'].loc[films['id_tmdb']== i].iloc[0]
+                genres = films['genres'].loc[films['id_tmdb']== i].iloc[0]
+                duree = films['runtime'].loc[films['id_tmdb']== i].iloc[0]
                 # st.write(title)
                 new_row = pd.DataFrame([{'id_tmdb': i,
                                          'overview': overview,
                                          'poster': poster,
                                          'title': title,
                                          'note': note,
-                                         'annee' : int(annee)}])
+                                         'annee' : int(annee),
+                                         'acteurs':acteurs,
+                                         'directeurs' : directeurs,
+                                         'genres' : genres,
+                                         'duree':duree}])
                 films_selection = pd.concat([films_selection, new_row],
                                             ignore_index=True)
                 # on trie le DataFrame par note pour afficher les mieux notés en premier
@@ -82,31 +91,47 @@ if directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower)
                         with st.popover("En savoir plus sur ce film"):
                             container = st.container(border=True)
                             # Récupérer les informations que nous allons afficher dans la popup à partir du DataFrame
-                            resum = films_selection_n.loc[i]['overview']
-                            img = films_selection_n.loc[i]['poster']
                             titre = films_selection_n.iloc[i]['title']
-                            eval = films_selection_n.iloc[i]['note']
-                            sortie = int(films_selection_n.iloc[i]['annee'])
+                            resume = films_selection_n.loc[i]['overview']
+                            chemin_image = films_selection_n.loc[i]['poster']
+                            acteurs = str( films_selection_n.loc[i]['acteurs'])
+                            acteurs = acteurs.replace('{','').replace("'","").replace("}","")
+                            annee =  films_selection_n.iloc[i]['annee']
+                            note = films_selection_n.iloc[i]['note']
+                            directeurs =  films_selection_n.iloc[i]['directeurs']
+                            directeurs = directeurs.replace("[","").replace("]","").replace("'","")
+                            genres =  films_selection_n.iloc[i]['genres']
+                            genres = genres.replace("[","").replace("]","").replace("'","")
+                            duree =  films_selection_n.iloc[i]['duree']
+
+                            
                             # Créer le html qui s'affichera dans la popup                                    
                             info_html = f"""
-                            <table>
-                                <tr>
-                                    <th colspan="2">Titre : {titre}</th>
-                                </tr>
-                                <tr>
-                                    <td style="width:50%">{resum}</td>
-                                    <td style="width:50%"><p style="text-align:center"><img src={img} alt={titre} style="width:200px; "></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><p style="font-weight:bold; text-decoration:underline;">Année de sortie :</p><p> {sortie} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><p style="font-weight:bold; text-decoration:underline;">Note :</p><p> {eval} </p>
-                                    </td>
-                                </tr>
-                            </table>
-                                        """
+                                <table>
+                                    <tr>
+                                        <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
+                                    </tr>
+                                    <tr>
+                                        <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
+                                        <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
+                                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
+                                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
+                                    </tr>
+                                    
+                                </table>
+                            """
 
                             # Afficher le HTML dans Streamlit avec unsafe_allow_html=True                                                   
                             container.markdown(info_html, unsafe_allow_html=True)
@@ -117,31 +142,47 @@ if directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower)
                         with st.popover("En savoir plus sur ce film"):
                             container = st.container(border=True)
                             # Récupérer les informations que nous allons afficher dans la popup à partir du DataFrame
-                            resum = films_selection_n.loc[i]['overview']
-                            img = films_selection_n.loc[i]['poster']
                             titre = films_selection_n.iloc[i]['title']
-                            eval = films_selection_n.iloc[i]['note']
-                            sortie = int(films_selection_n.iloc[i]['annee'])
+                            resume = films_selection_n.loc[i]['overview']
+                            chemin_image = films_selection_n.loc[i]['poster']
+                            acteurs = str( films_selection_n.loc[i]['acteurs'])
+                            acteurs = acteurs.replace('{','').replace("'","").replace("}","")
+                            annee =  films_selection_n.iloc[i]['annee']
+                            note = films_selection_n.iloc[i]['note']
+                            directeurs =  films_selection_n.iloc[i]['directeurs']
+                            directeurs = directeurs.replace("[","").replace("]","").replace("'","")
+                            genres =  films_selection_n.iloc[i]['genres']
+                            genres = genres.replace("[","").replace("]","").replace("'","")
+                            duree =  films_selection_n.iloc[i]['duree']
+
+                            
                             # Créer le html qui s'affichera dans la popup                                    
                             info_html = f"""
-                            <table>
-                                <tr>
-                                    <th colspan="2">Titre : {titre}</th>
-                                </tr>
-                                <tr>
-                                    <td style="width:50%">{resum}</td>
-                                    <td style="width:50%"><p style="text-align:center"><img src={img} alt={titre} style="width:200px; "></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><p style="font-weight:bold; text-decoration:underline;">Année de sortie :</p><p> {sortie} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><p style="font-weight:bold; text-decoration:underline;">Note :</p><p> {eval} </p>
-                                    </td>
-                                </tr>
-                            </table>
-                                        """
+                                <table>
+                                    <tr>
+                                        <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
+                                    </tr>
+                                    <tr>
+                                        <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
+                                        <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
+                                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
+                                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
+                                    </tr>
+                                    
+                                </table>
+                            """
 
                             # Afficher le HTML dans Streamlit avec unsafe_allow_html=True                                                   
                             container.markdown(info_html, unsafe_allow_html=True)
@@ -152,31 +193,47 @@ if directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower)
                         with st.popover("En savoir plus sur ce film"):
                             container = st.container(border=True)
                             # Récupérer les informations que nous allons afficher dans la popup à partir du DataFrame
-                            resum = films_selection_n.loc[i]['overview']
-                            img = films_selection_n.loc[i]['poster']
                             titre = films_selection_n.iloc[i]['title']
-                            eval = films_selection_n.iloc[i]['note']
-                            sortie = int(films_selection_n.iloc[i]['annee'])
+                            resume = films_selection_n.loc[i]['overview']
+                            chemin_image = films_selection_n.loc[i]['poster']
+                            acteurs = str( films_selection_n.loc[i]['acteurs'])
+                            acteurs = acteurs.replace('{','').replace("'","").replace("}","")
+                            annee =  films_selection_n.iloc[i]['annee']
+                            note = films_selection_n.iloc[i]['note']
+                            directeurs =  films_selection_n.iloc[i]['directeurs']
+                            directeurs = directeurs.replace("[","").replace("]","").replace("'","")
+                            genres =  films_selection_n.iloc[i]['genres']
+                            genres = genres.replace("[","").replace("]","").replace("'","")
+                            duree =  films_selection_n.iloc[i]['duree']
+
+                            
                             # Créer le html qui s'affichera dans la popup                                    
                             info_html = f"""
-                            <table>
-                                <tr>
-                                    <th colspan="2">Titre : {titre}</th>
-                                </tr>
-                                <tr>
-                                    <td style="width:50%">{resum}</td>
-                                    <td style="width:50%"><p style="text-align:center"><img src={img} alt={titre} style="width:200px; "></p></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><p style="font-weight:bold; text-decoration:underline;">Année de sortie :</p><p> {sortie} </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><p style="font-weight:bold; text-decoration:underline;">Note :</p><p> {eval} </p>
-                                    </td>
-                                </tr>
-                            </table>
-                                        """
+                                <table>
+                                    <tr>
+                                        <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
+                                    </tr>
+                                    <tr>
+                                        <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
+                                        <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
+                                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
+                                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
+                                    </tr>
+                                    
+                                </table>
+                            """
 
                             # Afficher le HTML dans Streamlit avec unsafe_allow_html=True                                                   
                             container.markdown(info_html, unsafe_allow_html=True)
