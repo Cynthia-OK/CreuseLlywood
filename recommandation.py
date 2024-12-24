@@ -90,6 +90,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
+st.video('https://tenor.com/view/jerry-eating-amc-perfectly-popcorn-mouse-yum-yum-delicious-gif-15877432887457947334')
 # Contenu de votre section statistique avec le fond d'écran
 with st.container():
     st.markdown('<div class="stat-container">', unsafe_allow_html=True)
