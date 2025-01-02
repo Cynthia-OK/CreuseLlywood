@@ -1,10 +1,14 @@
 import streamlit as st
 import pandas as pd
 
-# st.set_page_config(
-#     page_title="Hello",
-#     page_icon="👋",
-# )
+st.set_page_config(
+    page_title="Application de recommandation de films", 
+    page_icon="https://img.freepik.com/vecteurs-libre/concept-cinema_1284-12713.jpg", 
+    layout="wide", 
+    initial_sidebar_state="expanded"
+) 
+
+
 pages = {
     "Accueil" : [
         st.Page("./pages/accueil.py", title="Accueil", icon="🏠"),
@@ -24,3 +28,33 @@ pages = {
 
 pg = st.navigation(pages)
 pg.run()
+
+# st.sidebar.image("http://blog.ac-versailles.fr/cineblog/public/cinema.jpg")
+
+# CSS personnalisé
+sidebar_css = """
+<style>
+    [data-testid="stSidebar"] {
+        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        opacity: 0.9;
+        
+    }
+    [data-testid="stSidebarNavLink"] {
+        background-color: #cbc7c5;
+        color: #787574; !important
+    }
+
+    [data-testid="stNavSectionHeader"] {
+        font-size : 20px;
+        color: #bb9afb;
+    }
+
+
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(sidebar_css, unsafe_allow_html=True)

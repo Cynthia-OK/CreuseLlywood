@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import MinMaxScaler
 from st_clickable_images import clickable_images
 import pickle
@@ -26,7 +25,7 @@ st.title('Bienvenue sur notre page de recommandation de films')
 
 # Chargement des données
 films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
-# films_acteurs = pd.read_csv('./donnees/films_selectionnes_avec_acteurs.csv', sep="\t", low_memory=False)
+
 
 
 
@@ -67,7 +66,6 @@ if st.session_state.show_content:
                 st.session_state.show_content = False  # Masquer le contenu
 
 if st.session_state.show_content == False :
-    # st.write('coucou')
     # st.write({st.session_state.clicked})
     id = int(st.session_state.liste_id[st.session_state.clicked])
     # st.write(f"id = {id}")
@@ -125,14 +123,6 @@ if st.session_state.show_content == False :
                 # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
     film_select.markdown(film_html, unsafe_allow_html=True)
     col1, col2, col3 = film_select.columns(3)
-    # with col1:
-    #     st.image(chemin_image, width=150)
-    # with col2:
-    #     st.text(f"Résumé : {resume}")
-    # with col3:
-    #     st.text(f"Année de sortie : {annee}")   
-    #     st.text(f"Acteurs : {acteurs}")   
-    #     st.text(f"Directeurs : {directeurs}") 
     # Chargement des modèles
     with open('./modeles/modele_films_NN.pkl', 'rb') as f:
             model_charge = pickle.load(f)
@@ -168,29 +158,7 @@ if st.session_state.show_content == False :
             # st.write(films.iloc[161])
             df_resultat = films.iloc[indices[0,1:]].reset_index(drop=True)
             
-            # st.text('caract_film_num')
-            # st.dataframe(caract_film_num)
-
-            # st.text(' caract_film_cat')
-            # st.dataframe( caract_film_cat)
-
-
-            # st.text('caract_film_encoded')
-            # st.dataframe(caract_film_encoded)
             
-            # st.text('distances, indices')
-            # st.write(distances, indices)
-
-        
-            # st.text('df_resultat')
-            # st.dataframe(df_resultat)  
-        # df_affichage = pd.merge(df_resultat,
-        #                         films_acteurs,
-        #                         how='left',
-        #                         on = 'id_tmdb')
-        
-        # st.write(df_affichage)
-        
     bloc_films = st.container(border=True)
     bloc_films.header('Films similaires')
     col1, col2, col3 = bloc_films.columns(3)
@@ -351,3 +319,18 @@ if retour:
         st.session_state.clear()
         st.rerun()  # Refresh immediately
 
+# CSS personnalisé
+sidebar_css = """
+<style>
+    [data-testid="stSidebar"] {
+        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        color: blue;
+    }
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(sidebar_css, unsafe_allow_html=True)

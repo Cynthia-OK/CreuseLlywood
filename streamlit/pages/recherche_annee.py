@@ -1,13 +1,7 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-from sklearn.neighbors import NearestNeighbors
-from sklearn.preprocessing import MinMaxScaler
-import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-
 
 films = pd.read_csv("./donnees/films_selectionnes.csv",sep='\t')
 
@@ -26,7 +20,7 @@ if annee > 1999 :
 
 # 1-trier la table films : 
     films_trie_par_notes = films.sort_values(by= 'vote_average', ascending =False)
-    # st.dataframe(films_trie_par_notes)
+    #st.dataframe(films_trie_par_notes)
 
 # prendre que les films selectionné dans le slider : 
  
@@ -36,9 +30,49 @@ if annee > 1999 :
     top_films = films_selec_par_annee.sort_values(by='vote_average', ascending = False).head(10)
     #st.dataframe(top_films)
 
-# Avisuel des  10 premiers films :
-st.bar_chart(top_films.head(10).set_index('title')['vote_average'])
 
-# Plus : 
-st.write("Résumé des films :")
-st.dataframe(top_films.head(10))
+
+
+# Afficher les 10 meilleurs films : 
+st.write("Affiches des 10 meilleurs films :")
+
+    #st.image(row['poster_path'], caption=row['title'], width=200)
+st.write()
+for index, row in top_films.iterrows():
+    col1, col2= st.columns(2)
+    with col1:
+        st.image(row['poster_path'],width=200)
+    with col2:
+    #for index, row in top_films.iterrows():
+        st.write(row['overview'],width=200)   
+    st.write("---------------------------------------------------------")
+       
+
+
+   # Afficher un graphique des notes des films
+plt.figure(figsize=(10, 6))
+sns.barplot(x='title', y='vote_average', data=top_films, palette="Blues_d")
+plt.xticks(rotation=45, ha='right')
+plt.title(f"Top 10 des films les mieux notés de l'année {annee}")
+plt.xlabel("Film")
+plt.ylabel("Note moyenne")
+st.pyplot(plt)  # Affiche le graphique
+
+
+#st.image ('C:/Users/filiz/Desktop/image cine.jpg')
+
+# CSS personnalisé
+sidebar_css = """
+<style>
+    [data-testid="stSidebar"] {
+        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        color: blue;
+    }
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(sidebar_css, unsafe_allow_html=True)

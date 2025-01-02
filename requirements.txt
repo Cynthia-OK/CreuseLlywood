@@ -1,0 +1,10 @@
+streamlit
+pandas
+scikit_learn
+st_clickable_images
+import pickle
+seaborn
+matplotlib.pyplot
+streamlit_option_menu
+plotly.express
+plotly.graph_objects
