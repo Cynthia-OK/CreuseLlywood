@@ -103,19 +103,3 @@ sidebar_css = """
 # Injecter le CSS dans l'application Streamlit
 st.markdown(sidebar_css, unsafe_allow_html=True)
 
-
-# CSS pour personnaliser les liens dans la sidebar uniquement
-sidebar_link_css = """
-<style>
-    [data-testid="stSidebar"] a {
-        color: #F39C12; /* Couleur des liens dans la sidebar */
-        text-decoration: none; /* Supprime le soulignement */
-    }
-    [data-testid="stSidebar"] a:hover {
-        color: #FF5733; /* Couleur lors du survol dans la sidebar */
-    }
-</style>
-"""
-
-# Injecter le CSS
-st.markdown(sidebar_link_css, unsafe_allow_html=True)

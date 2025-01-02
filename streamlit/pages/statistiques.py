@@ -99,21 +99,3 @@ if acteur_cible:
             else:
                 totals_films = 0
             st.metric(" 🎬 Nombre total de films ", totals_films)
-
-
-
-# CSS personnalisé
-sidebar_css = """
-<style>
-    [data-testid="stSidebar"] {
-        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
-        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
-        background-repeat: no-repeat; /* Ne répète pas l'image */
-        background-position: center; /* Centre l'image */
-        color: blue;
-    }
-</style>
-"""
-
-# Injecter le CSS dans l'application Streamlit
-st.markdown(sidebar_css, unsafe_allow_html=True)

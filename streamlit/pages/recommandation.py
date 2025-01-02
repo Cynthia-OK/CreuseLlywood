@@ -313,24 +313,8 @@ if st.session_state.show_content == False :
     
       
     
-retour = st.button("Revenir à la recherche")
-if retour:
-        st.session_state.show_content = True
-        st.session_state.clear()
-        st.rerun()  # Refresh immediately
-
-# CSS personnalisé
-sidebar_css = """
-<style>
-    [data-testid="stSidebar"] {
-        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
-        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
-        background-repeat: no-repeat; /* Ne répète pas l'image */
-        background-position: center; /* Centre l'image */
-        color: blue;
-    }
-</style>
-"""
-
-# Injecter le CSS dans l'application Streamlit
-st.markdown(sidebar_css, unsafe_allow_html=True)
+    retour = st.button("Revenir à la recherche")
+    if retour:
+            st.session_state.show_content = True
+            st.session_state.clear()
+            st.rerun()  # Refresh immediately

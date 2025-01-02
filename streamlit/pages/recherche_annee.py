@@ -50,29 +50,14 @@ for index, row in top_films.iterrows():
 
 
    # Afficher un graphique des notes des films
-plt.figure(figsize=(10, 6))
-sns.barplot(x='title', y='vote_average', data=top_films, palette="Blues_d")
-plt.xticks(rotation=45, ha='right')
-plt.title(f"Top 10 des films les mieux notés de l'année {annee}")
-plt.xlabel("Film")
-plt.ylabel("Note moyenne")
-st.pyplot(plt)  # Affiche le graphique
+# plt.figure(figsize=(10, 6))
+# sns.barplot(x='title', y='vote_average', data=top_films, palette="Blues_d")
+# plt.xticks(rotation=45, ha='right')
+# plt.title(f"Top 10 des films les mieux notés de l'année {annee}")
+# plt.xlabel("Film")
+# plt.ylabel("Note moyenne")
+# st.pyplot(plt)  # Affiche le graphique
 
 
 #st.image ('C:/Users/filiz/Desktop/image cine.jpg')
 
-# CSS personnalisé
-sidebar_css = """
-<style>
-    [data-testid="stSidebar"] {
-        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
-        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
-        background-repeat: no-repeat; /* Ne répète pas l'image */
-        background-position: center; /* Centre l'image */
-        color: blue;
-    }
-</style>
-"""
-
-# Injecter le CSS dans l'application Streamlit
-st.markdown(sidebar_css, unsafe_allow_html=True)

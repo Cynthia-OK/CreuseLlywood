@@ -44,12 +44,15 @@ sidebar_css = """
     }
     [data-testid="stSidebarNavLink"] {
         background-color: #cbc7c5;
-        color: #787574; !important
+        color: #787574;
     }
-
+    [data-testid="stSidebarNavLink"] span {
+        color: #787574;
+    }
     [data-testid="stNavSectionHeader"] {
         font-size : 20px;
-        color: #bb9afb;
+        color: #97958d;
+        font-weight : bold;
     }
 
 
