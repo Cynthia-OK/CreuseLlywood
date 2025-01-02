@@ -41,13 +41,18 @@ if annee > 1999 :
 
 # Afficher les 10 meilleurs films : 
 st.write("Affiches des 10 meilleurs films :")
-for index, row in top_films.iterrows():
+
     #st.image(row['poster_path'], caption=row['title'], width=200)
-    st.write(index)
-    st.image(row['poster_path'],width=200)
-# Plus : 
-#st.write("Résumé des films :")
-#st.dataframe(top_films.head(10))
+st.write()
+for index, row in top_films.iterrows():
+    col1, col2= st.columns(2)
+    with col1:
+        st.image(row['poster_path'],width=200)
+    with col2:
+    #for index, row in top_films.iterrows():
+        st.write(row['overview'],width=200)   
+    st.write("---------------------------------------------------------")
+       
 
 
    # Afficher un graphique des notes des films
