@@ -4,6 +4,8 @@ from PIL import Image
 
 # st.title("Bienvenue sur notre application de recommandation de films")
 
+import base64
+
 
 # Ne marche pas : st.write_stream('Notre application vous permet de rechercher un film selon un directeur, un acteur, un film ...' )
 
@@ -13,7 +15,25 @@ with bloc_image:
     # Code HTML avec style en ligne pour l'image de fond
     image_html_code = """
                             <style>
-                                .button {
+                                .button_large {
+                                    border: solid;
+                                    border-color: rgba(232, 229, 228);
+                                    color: black;
+                                    padding: 4% 5px;
+                                    text-align: center;
+                                    display: inline-block;
+                                    font-size: 24px;
+                                    font_weigt:bold;
+                                    margin: 10px 20px 10px 20px ;
+                                    cursor: pointer;
+                                    border-radius: 20px;
+                                    width : 650px;
+                                    height : 100px;
+                                    border-style: ridge;
+                                    text-shadow: 1px 1px 2px grey;
+                                    background-color: rgba(232, 229, 228, 0.5);
+                                }
+                                .button_small {
                                     border: solid;
                                     border-color: rgba(232, 229, 228);
                                     color: black;
@@ -22,28 +42,28 @@ with bloc_image:
                                     display: inline-block;
                                     font-size: 20px;
                                     font_weigt:bold;
-                                    margin: 10px 15px 10px 15px ;
+                                    margin: 10px 5px 10px 5px;
                                     cursor: pointer;
-                                    border-radius: 25%;
-                                    width : 200px;
+                                    border-radius: 25px;
+                                    width : 160px;
                                     height : 100px;
                                     border-style: ridge;
                                     text-shadow: 1px 1px 2px grey;
                                     background-color: rgba(232, 229, 228, 0.5);
                                 }
                                 .div_image {
-                                    background-image: url('https://files.oaiusercontent.com/file-2DQUk7euCTmEnfq9o8zSK1?se=2024-12-17T15%3A33%3A35Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D2e006ec5-7236-4338-8608-a73aa5ecabb9.webp&sig=mR5fJOz7TjsoBALIptBXAd/ArSK0y/VsV6u8hGGoWEY%3D');
+                                    background-image: url('https://i.ibb.co/rH2JPL9/DALL-E-2025-01-02-09-36-44-A-cozy-living-room-scene-designed-for-a-movie-night-The-setup-includes-a.webp" alt="DALL-E-2025-01-02-09-36-44-A-cozy-living-room-scene-designed-for-a-movie-night-The-setup-includes-a');
                                     height: 700px;
-                                    width:auto; 
+                                    width:700px;
                                     background-size: cover;
                                     border: 2px solid #000;
 
                                     /* Flexbox configuration */
                                     display: flex;
                                     flex-direction: column;
-                                    justify-content: flex-end; /* Pushes content to the bottom */
-                                    align-items: center; /* Centers buttons horizontally */
-                                    padding-bottom: 20px; /* Optional: Adds space at the bottom */
+                                    justify-content: flex-end; /* Mettre le contenu en bas */
+                                    align-items: center; /* Centrer les boutons horizontalement */
+                                    
                                 }
                                 #link {
                                 color: black;
@@ -53,21 +73,26 @@ with bloc_image:
                                 h1{
                                 text-align: center;
                                 }
+
+                                bouttons{
+                                text-align: center;
+                                }
                             </style>
 
                         <h1>Bienvenue sur notre application de recommandation de films</h1>
                         <div class=div_image>
+                        <p class = bouttons>
+                        <a id="link" href="./recommandation" class="button_large">Rechercher des films similaires</a><p>
+                        <p class = bouttons>
+                        <a id="link" href="./recherche_directeur" class="button_small">Rechercher par directeur</a>
+                        <a id="link" href="./recherche_acteur" class="button_small">Rechercher par acteur</a>
+                        <a id="link" href="./recherche_genre" class="button_small">Rechercher par genre</a>
+                        <a id="link" href="./recherche_annee" class="button_small">Rechercher par année</a></p>
                         
-                        <a id="link" href="./recommandation" class="button">Rechercher par films similaires</a>
-                        <a id="link" href="./recherche_directeur" class="button">Rechercher par directeur</a>
-                        <a id="link" href="./recherche_acteur" class="button">Rechercher par acteur</a>
-                        <a id="link" href="./recherche_genre" class="button">Rechercher par genre</a>
-                        <a id="link" href="./recherche_annee" class="button">Rechercher par année</a>
-                        <a id="link" href="./statistiques.py" class="button">Statistiques sur nos données</a>
                         </div>"""
     bloc_image.markdown(image_html_code, unsafe_allow_html=True)
         
-
+# <a id="link" href="./statistiques.py" class="button_small">Statistiques sur nos données</a>
 
 
 

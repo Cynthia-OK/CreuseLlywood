@@ -123,8 +123,8 @@ if st.session_state.show_content == False :
                             """
 
                 # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
-film_select.markdown(film_html, unsafe_allow_html=True)
-col1, col2, col3 = film_select.columns(3)
+    film_select.markdown(film_html, unsafe_allow_html=True)
+    col1, col2, col3 = film_select.columns(3)
     # with col1:
     #     st.image(chemin_image, width=150)
     # with col2:
@@ -134,213 +134,213 @@ col1, col2, col3 = film_select.columns(3)
     #     st.text(f"Acteurs : {acteurs}")   
     #     st.text(f"Directeurs : {directeurs}") 
     # Chargement des modèles
-with open('./modeles/modele_films_NN.pkl', 'rb') as f:
-        model_charge = pickle.load(f)
-with open('./modeles/modele_SN_normalisation.pkl', 'rb') as f:
-        SN_charge = pickle.load(f)
-        # st.text('film choisi')
-        # st.dataframe(film_choisi)
+    with open('./modeles/modele_films_NN.pkl', 'rb') as f:
+            model_charge = pickle.load(f)
+    with open('./modeles/modele_SN_normalisation.pkl', 'rb') as f:
+            SN_charge = pickle.load(f)
+            # st.text('film choisi')
+            # st.dataframe(film_choisi)
 
-        caract_film = film_choisi[['popularity','vote_average', 'genre_Drama', 'genre_Horror',
-                    'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
-                    'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
-                    'genre_Fantasy', 'genre_Comedy', 'genre_Music', 'genre_Romance',
-                    'genre_War', 'genre_Documentary', 'genre_History',
-                    'genre_Science Fiction']]
-        index = caract_film.index
-        caract_film_num = caract_film[['popularity',  'vote_average']]
-        caract_film_cat = caract_film[['genre_Drama', 'genre_Horror',
-                    'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
-                    'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
-                    'genre_Fantasy', 'genre_Comedy', 'genre_Music', 'genre_Romance',
-                    'genre_War', 'genre_Documentary', 'genre_History',
-                    'genre_Science Fiction']]
-                
-        # je normalise les infos numériques de mon film choisi et je cherche les films similaires
-        from sklearn.preprocessing import MinMaxScaler
-        
-        caract_film_num_SN = pd.DataFrame(SN_charge.transform(caract_film_num), columns=caract_film_num.columns, index=index)
-        caract_film_cat_dummies = pd.get_dummies(caract_film_cat)
-        caract_film_encoded = pd.concat([caract_film_num_SN, caract_film_cat_dummies], axis=1)
-        distances, indices = model_charge.kneighbors(caract_film_encoded)
-        # st.write(indices)
-        # st.write(indices[0,1:])
-        # st.write(films.iloc[161])
-        df_resultat = films.iloc[indices[0,1:]].reset_index(drop=True)
-        
-        # st.text('caract_film_num')
-        # st.dataframe(caract_film_num)
-
-        # st.text(' caract_film_cat')
-        # st.dataframe( caract_film_cat)
-
-
-        # st.text('caract_film_encoded')
-        # st.dataframe(caract_film_encoded)
-        
-        # st.text('distances, indices')
-        # st.write(distances, indices)
-
-    
-        # st.text('df_resultat')
-        # st.dataframe(df_resultat)  
-    # df_affichage = pd.merge(df_resultat,
-    #                         films_acteurs,
-    #                         how='left',
-    #                         on = 'id_tmdb')
-    
-    # st.write(df_affichage)
-    
-bloc_films = st.container(border=True)
-bloc_films.header('Films similaires')
-col1, col2, col3 = bloc_films.columns(3)
-with col1:
-        # st.write(df_resultat.iloc[0::3]['poster_path'].values)
-        # st.image(liste_chemin[0::3], width=150)
-        for i in df_resultat.loc[0::3].index:
-            st.image(df_resultat.loc[i ,'poster_path'], width=200)
-            with st.popover("En savoir plus sur ce film"):
-                container = st.container(border=True)
-                resume = df_resultat.loc[i]['overview']
-                chemin_image = df_resultat.loc[i]['poster_path']
-                titre = df_resultat.iloc[i]['title']
-                acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
-                acteurs = acteurs.replace('{','').replace("'","").replace("}","")
-                annee = df_resultat.iloc[i]['year']
-                note = df_resultat.iloc[i]['vote_average']
-                directeurs = df_resultat.iloc[i]['liste_directeurs_noms']
-                directeurs = directeurs.replace("[","").replace("]","").replace("'","")
-                genres = df_resultat.iloc[i]['genres']
-                genres = genres.replace("[","").replace("]","").replace("'","")
-                duree = df_resultat.iloc[i]['runtime']              
-                info_html = f"""
-                <table>
-                    <tr>
-                        <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
-                    </tr>
-                    <tr>
-                        <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
-                        <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
-                    </tr>
-                     <tr>
-                        <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
-                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
-                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
-                    </tr>
+            caract_film = film_choisi[['popularity','vote_average', 'genre_Drama', 'genre_Horror',
+                        'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
+                        'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
+                        'genre_Fantasy', 'genre_Comedy', 'genre_Music', 'genre_Romance',
+                        'genre_War', 'genre_Documentary', 'genre_History',
+                        'genre_Science Fiction']]
+            index = caract_film.index
+            caract_film_num = caract_film[['popularity',  'vote_average']]
+            caract_film_cat = caract_film[['genre_Drama', 'genre_Horror',
+                        'genre_Thriller', 'genre_Crime', 'genre_Animation', 'genre_Mystery',
+                        'genre_Family', 'genre_Western', 'genre_Adventure', 'genre_Action',
+                        'genre_Fantasy', 'genre_Comedy', 'genre_Music', 'genre_Romance',
+                        'genre_War', 'genre_Documentary', 'genre_History',
+                        'genre_Science Fiction']]
                     
-                </table>
-                            """
+            # je normalise les infos numériques de mon film choisi et je cherche les films similaires
+            from sklearn.preprocessing import MinMaxScaler
+            
+            caract_film_num_SN = pd.DataFrame(SN_charge.transform(caract_film_num), columns=caract_film_num.columns, index=index)
+            caract_film_cat_dummies = pd.get_dummies(caract_film_cat)
+            caract_film_encoded = pd.concat([caract_film_num_SN, caract_film_cat_dummies], axis=1)
+            distances, indices = model_charge.kneighbors(caract_film_encoded)
+            # st.write(indices)
+            # st.write(indices[0,1:])
+            # st.write(films.iloc[161])
+            df_resultat = films.iloc[indices[0,1:]].reset_index(drop=True)
+            
+            # st.text('caract_film_num')
+            # st.dataframe(caract_film_num)
 
-                # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
-                container.markdown(info_html, unsafe_allow_html=True)
-        # with st.expander("Cliquez ici pour voir plus d'informations"):
+            # st.text(' caract_film_cat')
+            # st.dataframe( caract_film_cat)
+
+
+            # st.text('caract_film_encoded')
+            # st.dataframe(caract_film_encoded)
+            
+            # st.text('distances, indices')
+            # st.write(distances, indices)
+
         
-with col2:
-        # st.write(df_resultat.iloc[1::3]['poster_path'])
-        for i in df_resultat.loc[1::3].index:
-            st.image(df_resultat.loc[i ,'poster_path'], width=200)
-            with st.popover("En savoir plus sur ce film"):
-                container = st.container(border=True)
-                resume = df_resultat.loc[i]['overview']
-                chemin_image = df_resultat.loc[i]['poster_path']
-                titre = df_resultat.iloc[i]['title']
-                acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
-                acteurs = acteurs.replace('{','').replace("'","").replace("}","")
-                annee = df_resultat.iloc[i]['year']
-                note = df_resultat.iloc[i]['vote_average']
-                directeurs = df_resultat.iloc[i]['liste_directeurs_noms']
-                directeurs = directeurs.replace("[","").replace("]","").replace("'","")
-                acteurs = df_resultat.iloc[i]['liste_acteurs_noms']
-                acteurs = acteurs.replace("{","").replace("}","").replace("'","")
-                genres = df_resultat.iloc[i]['genres']
-                genres = genres.replace("[","").replace("]","").replace("'","")
-                duree = df_resultat.iloc[i]['runtime']              
-                info_html = f"""
-                <table>
-                    <tr>
-                        <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
-                    </tr>
-                    <tr>
-                        <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
-                        <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
-                    </tr>
-                     <tr>
-                        <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
-                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
-                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
-                    </tr>
-                    
-                </table>
-                            """
+            # st.text('df_resultat')
+            # st.dataframe(df_resultat)  
+        # df_affichage = pd.merge(df_resultat,
+        #                         films_acteurs,
+        #                         how='left',
+        #                         on = 'id_tmdb')
+        
+        # st.write(df_affichage)
+        
+    bloc_films = st.container(border=True)
+    bloc_films.header('Films similaires')
+    col1, col2, col3 = bloc_films.columns(3)
+    with col1:
+            # st.write(df_resultat.iloc[0::3]['poster_path'].values)
+            # st.image(liste_chemin[0::3], width=150)
+            for i in df_resultat.loc[0::3].index:
+                st.image(df_resultat.loc[i ,'poster_path'], width=200)
+                with st.popover("En savoir plus sur ce film"):
+                    container = st.container(border=True)
+                    resume = df_resultat.loc[i]['overview']
+                    chemin_image = df_resultat.loc[i]['poster_path']
+                    titre = df_resultat.iloc[i]['title']
+                    acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
+                    acteurs = acteurs.replace('{','').replace("'","").replace("}","")
+                    annee = df_resultat.iloc[i]['year']
+                    note = df_resultat.iloc[i]['vote_average']
+                    directeurs = df_resultat.iloc[i]['liste_directeurs_noms']
+                    directeurs = directeurs.replace("[","").replace("]","").replace("'","")
+                    genres = df_resultat.iloc[i]['genres']
+                    genres = genres.replace("[","").replace("]","").replace("'","")
+                    duree = df_resultat.iloc[i]['runtime']              
+                    info_html = f"""
+                    <table>
+                        <tr>
+                            <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
+                        </tr>
+                        <tr>
+                            <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
+                            <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
+                        </tr>
+                        <tr>
+                            <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
+                            <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
+                            <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
+                        </tr>
+                        
+                    </table>
+                                """
 
-                # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
-                container.markdown(info_html, unsafe_allow_html=True)
-with col3:
-        for i in df_resultat.loc[2::3].index:
-            st.image(df_resultat.loc[i ,'poster_path'], width=200)
-            with st.popover("En savoir plus sur ce film"):
-                container = st.container(border=True)
-                resume = df_resultat.loc[i]['overview']
-                chemin_image = df_resultat.loc[i]['poster_path']
-                titre = df_resultat.iloc[i]['title']
-                acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
-                acteurs = acteurs.replace('{','').replace("'","").replace("}","")
-                annee = df_resultat.iloc[i]['year']
-                note = df_resultat.iloc[i]['vote_average']
-                directeurs = df_resultat.iloc[i]['liste_directeurs_noms']
-                directeurs = directeurs.replace("[","").replace("]","").replace("'","")
-                acteurs = df_resultat.iloc[i]['liste_acteurs_noms']
-                acteurs = acteurs.replace("{","").replace("}","").replace("'","")
-                genres = df_resultat.iloc[i]['genres']
-                genres = genres.replace("[","").replace("]","").replace("'","")
-                duree = df_resultat.iloc[i]['runtime']              
-                info_html = f"""
-                <table>
-                    <tr>
-                        <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
-                    </tr>
-                    <tr>
-                        <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
-                        <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
-                    </tr>
-                     <tr>
-                        <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
-                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
-                        <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
-                    </tr>
-                    
-                </table>
-                            """
+                    # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
+                    container.markdown(info_html, unsafe_allow_html=True)
+            # with st.expander("Cliquez ici pour voir plus d'informations"):
+            
+    with col2:
+            # st.write(df_resultat.iloc[1::3]['poster_path'])
+            for i in df_resultat.loc[1::3].index:
+                st.image(df_resultat.loc[i ,'poster_path'], width=200)
+                with st.popover("En savoir plus sur ce film"):
+                    container = st.container(border=True)
+                    resume = df_resultat.loc[i]['overview']
+                    chemin_image = df_resultat.loc[i]['poster_path']
+                    titre = df_resultat.iloc[i]['title']
+                    acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
+                    acteurs = acteurs.replace('{','').replace("'","").replace("}","")
+                    annee = df_resultat.iloc[i]['year']
+                    note = df_resultat.iloc[i]['vote_average']
+                    directeurs = df_resultat.iloc[i]['liste_directeurs_noms']
+                    directeurs = directeurs.replace("[","").replace("]","").replace("'","")
+                    acteurs = df_resultat.iloc[i]['liste_acteurs_noms']
+                    acteurs = acteurs.replace("{","").replace("}","").replace("'","")
+                    genres = df_resultat.iloc[i]['genres']
+                    genres = genres.replace("[","").replace("]","").replace("'","")
+                    duree = df_resultat.iloc[i]['runtime']              
+                    info_html = f"""
+                    <table>
+                        <tr>
+                            <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
+                        </tr>
+                        <tr>
+                            <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
+                            <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
+                        </tr>
+                        <tr>
+                            <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
+                            <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
+                            <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
+                        </tr>
+                        
+                    </table>
+                                """
 
-                # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
-                container.markdown(info_html, unsafe_allow_html=True)
+                    # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
+                    container.markdown(info_html, unsafe_allow_html=True)
+    with col3:
+            for i in df_resultat.loc[2::3].index:
+                st.image(df_resultat.loc[i ,'poster_path'], width=200)
+                with st.popover("En savoir plus sur ce film"):
+                    container = st.container(border=True)
+                    resume = df_resultat.loc[i]['overview']
+                    chemin_image = df_resultat.loc[i]['poster_path']
+                    titre = df_resultat.iloc[i]['title']
+                    acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
+                    acteurs = acteurs.replace('{','').replace("'","").replace("}","")
+                    annee = df_resultat.iloc[i]['year']
+                    note = df_resultat.iloc[i]['vote_average']
+                    directeurs = df_resultat.iloc[i]['liste_directeurs_noms']
+                    directeurs = directeurs.replace("[","").replace("]","").replace("'","")
+                    acteurs = df_resultat.iloc[i]['liste_acteurs_noms']
+                    acteurs = acteurs.replace("{","").replace("}","").replace("'","")
+                    genres = df_resultat.iloc[i]['genres']
+                    genres = genres.replace("[","").replace("]","").replace("'","")
+                    duree = df_resultat.iloc[i]['runtime']              
+                    info_html = f"""
+                    <table>
+                        <tr>
+                            <th colspan="3" style="font-weight:bold; font-size:22px; ">{titre}</th>
+                        </tr>
+                        <tr>
+                            <td  style="width:50%"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline; "> Résumé : </span>{resume}</p></td>
+                            <td colspan="2" style="width:50%"><div style="text-align:center"><img src={chemin_image} alt={titre} style="width:200px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
+                        </tr>
+                        <tr>
+                            <td style="width:40%"><span style="font-weight:bold; text-decoration:underline;"> Année de sortie : </span>{annee}</td>
+                            <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Note : </span>{note}</td>
+                            <td style="width:30%"><span style="font-weight:bold; text-decoration:underline;"> Durée : </span>{duree}</td>
+                        </tr>
+                        
+                    </table>
+                                """
+
+                    # Afficher le HTML dans Streamlit avec unsafe_allow_html=True
+                    container.markdown(info_html, unsafe_allow_html=True)
      
     
       

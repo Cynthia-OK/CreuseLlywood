@@ -1,0 +1,6 @@
+ [theme]
+primaryColor = "#F39C12"  # Orange
+backgroundColor = "#2C3E50"  # Bleu foncé
+secondaryBackgroundColor = "#34495E"  # Gris foncé
+textColor = "#ECF0F1"  # Blanc
+font = "sans serif"  # Police sans serif
