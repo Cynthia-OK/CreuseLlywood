@@ -5,6 +5,5 @@ st_clickable_images
 seaborn
 matplotlib
 streamlit_option_menu
-plotly.express
-plotly.graph_objects
+plotly
 
