@@ -8,3 +8,4 @@ matplotlib.pyplot
 streamlit_option_menu
 plotly.express
 plotly.graph_objects
+time

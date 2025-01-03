@@ -1,5 +1,23 @@
 import streamlit as st
 import pandas as pd
+
+css = """
+<style>
+    body {
+        background-image: url('https://i.ibb.co/zXHpqqh/fond-films.png');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        opacity: 0.9;
+        height: 100vh; /* Assure que le fond couvre toute la fenêtre */
+        margin: 0;
+    }
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(css, unsafe_allow_html=True)
+
 st.title("Bienvenue sur notre page de recherche par genre")
 
 
@@ -43,7 +61,7 @@ else :
             poster = films_genre_select['poster_path'][i]          
             # st.write(films_genre_select)
             overview = films_genre_select['overview'][i]
-            title = films_genre_select['title'][i]
+            title = films_genre_select['original_title'][i]
             annee = films_genre_select['year'][i]
             note = films_genre_select['vote_average'][i]
             directeurs = films_genre_select['liste_directeurs_noms'][i]
