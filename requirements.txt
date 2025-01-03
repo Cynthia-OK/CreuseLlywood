@@ -2,7 +2,7 @@ streamlit
 pandas
 scikit_learn
 st_clickable_images
-import pickle
+pickle
 seaborn
 matplotlib.pyplot
 streamlit_option_menu

@@ -44,7 +44,7 @@ with bloc_image:
                                 }
                                 .div_image {
                                     background-image: url('https://i.ibb.co/rH2JPL9/DALL-E-2025-01-02-09-36-44-A-cozy-living-room-scene-designed-for-a-movie-night-The-setup-includes-a.webp" alt="DALL-E-2025-01-02-09-36-44-A-cozy-living-room-scene-designed-for-a-movie-night-The-setup-includes-a');
-                                    height: 700px;
+                                    height: 600px;
                                     width:700px;
                                     background-size: cover;
                                     margin-left: auto;
@@ -66,13 +66,16 @@ with bloc_image:
                                 h1{
                                 text-align: center;
                                 }
+                                h2{
+                                text-align: center;
+                                }
 
                                 bouttons{
                                 text-align: center;
                                 }
                             </style>
-
-                        <h1>Bienvenue sur notre application de recommandation de films</h1>
+                        <h1>CreuseLlywood</h1>
+                        <h2>La magie du cinéma à la sauce creusoise</h2>
                         <div class=div_image>
                         <p class = bouttons>
                         <a id="link" href="./recommandation" class="button_large">Rechercher des films similaires</a><p>

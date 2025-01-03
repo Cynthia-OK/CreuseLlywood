@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page_title="Application de recommandation de films", 
+    page_title="CreuseLlywood", 
     page_icon="https://img.freepik.com/vecteurs-libre/concept-cinema_1284-12713.jpg", 
     layout="wide", 
     initial_sidebar_state="expanded"
