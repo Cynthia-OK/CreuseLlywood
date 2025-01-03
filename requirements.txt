@@ -3,7 +3,7 @@ pandas
 scikit_learn
 st_clickable_images
 seaborn
-matplotlib.pyplot
+matplotlib
 streamlit_option_menu
 plotly.express
 plotly.graph_objects
