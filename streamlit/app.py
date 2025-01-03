@@ -29,13 +29,13 @@ pages = {
 pg = st.navigation(pages)
 pg.run()
 
-st.sidebar.image("http://blog.ac-versailles.fr/cineblog/public/cinema.jpg")
+st.sidebar.image("https://i.ibb.co/zmKy2qC/cinema.jpg")
 
 # CSS personnalisé
 sidebar_css = """
 <style>
     [data-testid="stSidebar"] {
-        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
+        background-image: url('https://i.ibb.co/zmKy2qC/cinema.jpg');
         background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
         background-repeat: no-repeat; /* Ne répète pas l'image */
         background-position: center; /* Centre l'image */
@@ -61,3 +61,5 @@ sidebar_css = """
 
 # Injecter le CSS dans l'application Streamlit
 st.markdown(sidebar_css, unsafe_allow_html=True)
+
+
