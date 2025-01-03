@@ -4,6 +4,23 @@ from sklearn.preprocessing import MinMaxScaler
 from st_clickable_images import clickable_images
 import pickle
 
+css = """
+<style>
+    body {
+        background-image: url('https://i.ibb.co/zXHpqqh/fond-films.png');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        opacity: 0.9;
+        height: 100vh; /* Assure que le fond couvre toute la fenêtre */
+        margin: 0;
+    }
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(css, unsafe_allow_html=True)
+
 
 # Initialisation des états de session
 if "show_content" not in st.session_state:
@@ -39,12 +56,12 @@ if st.session_state.show_content:
     liste_id = []
     if film_cible:
         film_cible_lower = film_cible.lower()
-        films['title'] = films['title'].apply(lambda x: x.lower())
+        films['original_title'] = films['original_title'].apply(lambda x: x.lower())
 
-        if not films['title'].str.contains(film_cible_lower).any():
-            st.write(f"Le film '{film_cible}' n'est pas dans le dataset.")
+        if not films['original_title'].str.contains(film_cible_lower).any():
+            st.write(f"Le film '{film_cible}' n'est pas disponible.")
         else:
-            films_identiques = films['id_tmdb'][films['title'].str.contains(film_cible_lower)]
+            films_identiques = films['id_tmdb'][films['original_title'].str.contains(film_cible_lower)]
                    
 
             for i in films_identiques.index:
@@ -75,7 +92,7 @@ if st.session_state.show_content == False :
     chemin_image = film_choisi['poster_path'][index_choisi]          
     # st.write(film_choisi)
     resume = film_choisi['overview'][index_choisi]
-    titre = film_choisi['title'][index_choisi]
+    titre = film_choisi['original_title'][index_choisi]
     annee = film_choisi['year'][index_choisi]
     note = film_choisi['vote_average'][index_choisi]
     directeurs = film_choisi['liste_directeurs_noms'][index_choisi]
@@ -171,7 +188,7 @@ if st.session_state.show_content == False :
                     container = st.container(border=True)
                     resume = df_resultat.loc[i]['overview']
                     chemin_image = df_resultat.loc[i]['poster_path']
-                    titre = df_resultat.iloc[i]['title']
+                    titre = df_resultat.iloc[i]['original_title']
                     acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
                     acteurs = acteurs.replace('{','').replace("'","").replace("}","")
                     annee = df_resultat.iloc[i]['year']
@@ -220,7 +237,7 @@ if st.session_state.show_content == False :
                     container = st.container(border=True)
                     resume = df_resultat.loc[i]['overview']
                     chemin_image = df_resultat.loc[i]['poster_path']
-                    titre = df_resultat.iloc[i]['title']
+                    titre = df_resultat.iloc[i]['original_title']
                     acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
                     acteurs = acteurs.replace('{','').replace("'","").replace("}","")
                     annee = df_resultat.iloc[i]['year']
@@ -268,7 +285,7 @@ if st.session_state.show_content == False :
                     container = st.container(border=True)
                     resume = df_resultat.loc[i]['overview']
                     chemin_image = df_resultat.loc[i]['poster_path']
-                    titre = df_resultat.iloc[i]['title']
+                    titre = df_resultat.iloc[i]['original_title']
                     acteurs = str(df_resultat.loc[i]['liste_acteurs_noms'])
                     acteurs = acteurs.replace('{','').replace("'","").replace("}","")
                     annee = df_resultat.iloc[i]['year']

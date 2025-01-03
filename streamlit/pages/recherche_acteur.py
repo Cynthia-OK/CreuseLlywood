@@ -1,5 +1,23 @@
 import streamlit as st
 import pandas as pd
+
+css = """
+<style>
+    body {
+        background-image: url('https://i.ibb.co/zXHpqqh/fond-films.png');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        opacity: 0.9;
+        height: 100vh; /* Assure que le fond couvre toute la fenêtre */
+        margin: 0;
+    }
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(css, unsafe_allow_html=True)
+
 st.title("Bienvenue sur notre page de recherche par acteur")
 # Chargement des données
 films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
@@ -42,7 +60,7 @@ if acteurs_liste_films['acteur_lower'].str.contains(acteur_select_lower).any() a
                 # film = films.loc[films['id_tmdb']== i]
                 overview = films['overview'].loc[films['id_tmdb']== i].iloc[0]
                 poster = films['poster_path'].loc[films['id_tmdb']== i].iloc[0]
-                title = films['title'].loc[films['id_tmdb']== i].iloc[0]
+                title = films['original_title'].loc[films['id_tmdb']== i].iloc[0]
                 note = films['vote_average'].loc[films['id_tmdb']== i].iloc[0]
                 annee = films['year'].loc[films['id_tmdb']== i].iloc[0]
                 acteurs = films['liste_acteurs_noms'].loc[films['id_tmdb']== i].iloc[0]

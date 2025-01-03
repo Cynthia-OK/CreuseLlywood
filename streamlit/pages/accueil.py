@@ -1,5 +1,58 @@
 import streamlit as st
 import pandas as pd
+import time 
+
+
+css = """
+<style>
+    body {
+        background-image: url('https://i.ibb.co/zXHpqqh/fond-films.png');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        opacity: 0.9;
+        height: 100vh; /* Assure que le fond couvre toute la fenêtre */
+        margin: 0;
+    }
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(css, unsafe_allow_html=True)
+
+
+# Conteneur pour la vidéo
+bloc_video = st.empty()  # Crée un conteneur vide
+
+# Afficher la vidéo
+with bloc_video.container():
+    st.markdown("""
+    <style>
+    #video-container {
+        display: flex;
+        justify-content: center;  
+        align-items: center;      
+        height: 100vh;            
+    }
+
+    </style>
+    <div id="video-container">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/XVEflECtfBM?autoplay=1&controls=0&si=rKe9e2NgaHpaMHpG" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
+    </div>
+        """, unsafe_allow_html=True)
+    
+
+# Attendre 10 secondes
+time.sleep(10)
+
+# Vider le conteneur (supprime la vidéo)
+bloc_video.empty()
+
 
 bloc_image = st.container()
 with bloc_image:
@@ -44,7 +97,7 @@ with bloc_image:
                                 }
                                 .div_image {
                                     background-image: url('https://i.ibb.co/rH2JPL9/DALL-E-2025-01-02-09-36-44-A-cozy-living-room-scene-designed-for-a-movie-night-The-setup-includes-a.webp" alt="DALL-E-2025-01-02-09-36-44-A-cozy-living-room-scene-designed-for-a-movie-night-The-setup-includes-a');
-                                    height: 600px;
+                                    height: 550px;
                                     width:700px;
                                     background-size: cover;
                                     margin-left: auto;

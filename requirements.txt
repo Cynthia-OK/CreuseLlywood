@@ -4,6 +4,7 @@ scikit_learn
 st_clickable_images
 seaborn
 matplotlib
-streamlit_option_menu
 plotly
+time
+
 

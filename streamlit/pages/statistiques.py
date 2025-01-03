@@ -1,10 +1,24 @@
 import streamlit as st
 import pandas as pd
-from streamlit_option_menu import option_menu
 import plotly.express as px
 import plotly.graph_objects as go
 
+css = """
+<style>
+    body {
+        background-image: url('https://i.ibb.co/zXHpqqh/fond-films.png');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        opacity: 0.9;
+        height: 100vh; /* Assure que le fond couvre toute la fenêtre */
+        margin: 0;
+    }
+</style>
+"""
 
+# Injecter le CSS dans l'application Streamlit
+st.markdown(css, unsafe_allow_html=True)
 
 films = pd.read_csv("./donnees/films_selectionnes.csv", sep='\t', low_memory=False)
 df_acteur_genre = pd.read_csv("./donnees/stat/df_acteur_genre.csv", sep='\t', low_memory=False)
