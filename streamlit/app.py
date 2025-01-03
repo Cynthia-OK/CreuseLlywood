@@ -12,7 +12,7 @@ st.set_page_config(
 sidebar_css = """
 <style>
     [data-testid="stSidebar"] {
-        background-image: url('http://blog.ac-versailles.fr/cineblog/public/cinema.jpg');
+        background-image: url('https://i.ibb.co/zmKy2qC/cinema.jpg');
         background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
         background-repeat: no-repeat; /* Ne répète pas l'image */
         background-position: center; /* Centre l'image */
