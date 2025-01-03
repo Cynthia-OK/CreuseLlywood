@@ -8,6 +8,25 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+
+css = """
+<style>
+    body {
+        background-image: url('https://i.ibb.co/zXHpqqh/fond-films.png');
+        background-size: cover; /* Adapte l'image pour couvrir tout l'espace */
+        background-repeat: no-repeat; /* Ne répète pas l'image */
+        background-position: center; /* Centre l'image */
+        opacity: 0.9;
+        height: 100vh; /* Assure que le fond couvre toute la fenêtre */
+        margin: 0;
+    }
+</style>
+"""
+
+# Injecter le CSS dans l'application Streamlit
+st.markdown(css, unsafe_allow_html=True)
+
+
 # CSS personnalisé
 sidebar_css = """
 <style>
