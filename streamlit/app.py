@@ -29,7 +29,7 @@ pages = {
 pg = st.navigation(pages)
 pg.run()
 
-# st.sidebar.image("http://blog.ac-versailles.fr/cineblog/public/cinema.jpg")
+st.sidebar.image("http://blog.ac-versailles.fr/cineblog/public/cinema.jpg")
 
 # CSS personnalisé
 sidebar_css = """
