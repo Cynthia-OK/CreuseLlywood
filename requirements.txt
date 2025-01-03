@@ -2,10 +2,9 @@ streamlit
 pandas
 scikit_learn
 st_clickable_images
-pickle
 seaborn
 matplotlib.pyplot
 streamlit_option_menu
 plotly.express
 plotly.graph_objects
-python==3.12.4
+
