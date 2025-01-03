@@ -8,6 +8,18 @@ import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
+
+
+st.set_page_config(
+    page_title="Recommandation Film", 
+    page_icon="https://img.freepik.com/vecteurs-libre/concept-cinema_1284-12713.jpg", 
+    layout="wide", 
+    initial_sidebar_state="expanded"  
+)
+
+
+
 films = pd.read_csv("./donnees/films_genre_colonne.csv", sep='\t', low_memory=False)
 df_acteur_genre = pd.read_csv("./donnees/df_acteur_genre (1).csv", sep='\t', low_memory=False)
 df_acteur_genre = df_acteur_genre.drop('Unnamed: 0',axis=1)
@@ -79,19 +91,36 @@ def films_similaires(tmdb):
 
 st.header('Bienvuenu sur notre site de recommandation de films')
 
+# st.markdown(
+#     """
+#     <style>
+#     .reportview-container {
+#         background: url("https://media.istockphoto.com/id/1191001701/fr/photo/pop-corn-et-clapperboard.jpg?s=612x612&w=0&k=20&c=AHQ7hOMdCMRfAya18h3rznNEflqmFS3Q90UznAbNfzM=");
+#     }
+#    </style>
+#     """,
+#     unsafe_allow_html=True
+# )
+
+
+
 st.markdown(
     """
     <style>
     .reportview-container {
-        background: url("https://media.istockphoto.com/id/1191001701/fr/photo/pop-corn-et-clapperboard.jpg?s=612x612&w=0&k=20&c=AHQ7hOMdCMRfAya18h3rznNEflqmFS3Q90UznAbNfzM=");
+        background-image: url('https://dacobello.com/cdn/shop/articles/Recette-14-Pop-corn-au-cheddar-scaled_1536x.jpg?v=1666189676'); /* Remplacez par l'URL ou le chemin de votre image */
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        padding: 0;
     }
-   </style>
-    """,
+    .sidebar .sidebar-content {
+        background-color: rgba(255, 255, 255, 0.8); /* Rendre la barre latérale semi-transparente si nécessaire */
+    }
+    </style>
+    """, 
     unsafe_allow_html=True
 )
-
-
-st.video('https://tenor.com/view/jerry-eating-amc-perfectly-popcorn-mouse-yum-yum-delicious-gif-15877432887457947334')
 # Contenu de votre section statistique avec le fond d'écran
 with st.container():
     st.markdown('<div class="stat-container">', unsafe_allow_html=True)
