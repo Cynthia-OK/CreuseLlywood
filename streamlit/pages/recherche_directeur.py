@@ -30,20 +30,20 @@ directeur_liste_films = pd.read_csv('./donnees/stat/df_directeur_liste_films.csv
 directeur_liste_films['directeur_lower'] = directeur_liste_films['directeur'].apply(lambda x: x.lower())
 
 #Saisie d'un directeur par l'utilisateur
-directeur_select = st.text_input('Saisir un directeur')
+directeur_select = st.text_input('Saisir un réalisateur')
 #on met la saisie en minuscule
 directeur_select_lower = directeur_select.lower()
 # st.write(directeur_select_lower)
 #vérifier que la saisie est dans la liste si oui on affiche la liste des directeurs correspondant dans la liste disponible
 if not directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower).any():
-    st.write(f"Le directeur '{directeur_select}' n'est pas dans le dataset.")
+    st.write(f"Le réalisateur '{directeur_select}' n'est pas disponible.")
 if directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower).any() and directeur_select:
     films_directeur_dispo = directeur_liste_films[directeur_liste_films['directeur_lower'].str.contains(directeur_select_lower)]
     liste_directeur_dispo = films_directeur_dispo['directeur'].tolist()
     
     
     if len(liste_directeur_dispo)>0 :
-        directeur_choisi = st.selectbox('Voici les directeurs correspondant à votre saisie',liste_directeur_dispo, index=None)
+        directeur_choisi = st.selectbox('Voici les réalisateurs correspondant à votre saisie',liste_directeur_dispo, index=None)
         # on cherche les films du directeur choisi
         if directeur_choisi : 
 
