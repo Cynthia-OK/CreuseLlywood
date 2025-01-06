@@ -19,6 +19,7 @@ css = """
 st.markdown(css, unsafe_allow_html=True)
 
 st.title("Bienvenue sur notre page de recherche par acteur")
+st.text("Notre application contient les films français ou d’action sortis à partir de 2000 avec une note supérieure à la moyenne")
 # Chargement des données
 films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
 acteurs_liste_films = pd.read_csv('./donnees/stat/df_acteurs_liste_films.csv', sep="\t", low_memory=False)

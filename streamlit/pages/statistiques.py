@@ -31,6 +31,7 @@ revenue = pd.read_csv("./donnees/stat/revenue.csv",low_memory=False)
 st.title('Bienvenue sur notre page de statistiques')
 
 st.write("Et si on faisait des graphiques amusants!")
+st.text("Notre application contient les films français ou d’action sortis à partir de 2000 avec une note supérieure à la moyenne")
 
 # graphique sur la durée des films
 

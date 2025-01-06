@@ -22,6 +22,7 @@ st.markdown(css, unsafe_allow_html=True)
 films = pd.read_csv("./donnees/films_selectionnes.csv",sep='\t')
 
 st.title('Afficher les films sur ces dernières années') 
+st.text("Notre application contient les films français ou d’action sortis à partir de 2000 avec une note supérieure à la moyenne")
 
 annee = st.slider ("Sélectionnez une année :",
            min_value=2000,
