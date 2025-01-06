@@ -40,6 +40,8 @@ def custom_clickable_images(liste_image, titles=None, div_style={}, img_style={}
 # Titre de l'application
 st.title('Bienvenue sur notre page de recommandation de films')
 
+st.text("Notre application contient les films français ou d’action sortis à partir de 2000 avec une note supérieure à la moyenne")
+
 # Chargement des données
 films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=False)
 
@@ -49,7 +51,8 @@ films = pd.read_csv('./donnees/films_selectionnes.csv', sep="\t", low_memory=Fal
 
 if st.session_state.show_content:
     # Entrée utilisateur pour le titre du film
-    film_cible = st.text_input('Rentrer un titre')
+
+    film_cible = st.text_input('Rechercher un titre',help='Saisir un titre et cliquer sur Entrer')
 
     # Initialisation des variables 
     liste_image = []
