@@ -99,7 +99,7 @@ pages = {
     ],
     "Recommandations": [
         st.Page("./pages/recommandation.py", title="Recherche de films similaires par titre", icon="🎞️"),
-        st.Page("./pages/recherche_directeur.py", title="Recherche de films par directeur", icon="📽️"),
+        st.Page("./pages/recherche_directeur.py", title="Recherche de films par réalisateur", icon="📽️"),
         st.Page("./pages/recherche_acteur.py", title="Recherche de films par acteur", icon="🎭"),
         st.Page("./pages/recherche_genre.py", title="Recherche de films par genre", icon="💥"),
         st.Page("./pages/recherche_annee.py", title="Recherche de films par année", icon="📅"),

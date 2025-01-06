@@ -134,7 +134,7 @@ if acteurs_liste_films['acteur_lower'].str.contains(acteur_select_lower).any() a
                                         <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Réalisateurs : </span> {directeurs}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
@@ -185,7 +185,7 @@ if acteurs_liste_films['acteur_lower'].str.contains(acteur_select_lower).any() a
                                         <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Réalisateurs : </span> {directeurs}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
@@ -236,7 +236,7 @@ if acteurs_liste_films['acteur_lower'].str.contains(acteur_select_lower).any() a
                                         <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Réalisateurs : </span> {directeurs}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>

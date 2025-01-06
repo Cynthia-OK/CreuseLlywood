@@ -128,7 +128,7 @@ if st.session_state.show_content == False :
                         <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
                     </tr>
                     <tr>
-                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                        <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Réalisateurs : </span> {directeurs}</td>
                     </tr>
                     <tr>
                         <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
@@ -216,7 +216,7 @@ if st.session_state.show_content == False :
                             <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Réalisateurs : </span> {directeurs}</td>
                         </tr>
                         <tr>
                             <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
@@ -267,7 +267,7 @@ if st.session_state.show_content == False :
                             <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Réalisateurs : </span> {directeurs}</td>
                         </tr>
                         <tr>
                             <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
@@ -315,7 +315,7 @@ if st.session_state.show_content == False :
                             <td colspan="3"><p style="text-align:justify;"><span style="font-weight:bold; text-decoration:underline;"> Acteurs : </span> {acteurs}</p></td>
                         </tr>
                         <tr>
-                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Directeurs : </span> {directeurs}</td>
+                            <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Réalisateurs : </span> {directeurs}</td>
                         </tr>
                         <tr>
                             <td colspan="3"><span style="font-weight:bold; text-decoration:underline;"> Genres : </span> {genres}</td>
