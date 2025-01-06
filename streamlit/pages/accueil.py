@@ -3,12 +3,12 @@ import pandas as pd
 import time 
 
 
-if 'first_run' not in st.session_state:
-    st.session_state.first_run = True
-    time.sleep(3)
-    st.rerun()
-else:
-    st.session_state.first_run = False
+# if 'first_run' not in st.session_state:
+#     st.session_state.first_run = True
+#     # time.sleep(3)
+#     st.rerun()
+# else:
+#     st.session_state.first_run = False
 
 
 css = """
