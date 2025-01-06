@@ -56,7 +56,7 @@ with bloc_video.container():
     
 
 # Attendre 10 secondes
-time.sleep(10)
+time.sleep(9)
 
 # Vider le conteneur (supprime la vidéo)
 bloc_video.empty()
