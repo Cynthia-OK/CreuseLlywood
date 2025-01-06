@@ -56,12 +56,20 @@ sidebar_css = """
         color: #4d4b47;
         margin-bottom: 10px;
         text-align: center;
+        background-color: #cbc7c5;
+        opacity: 0.8;
+        border-radius:20px;
     }
     .custom-text {
         font-size: 16px;
+        font-weight: bold;
         color: #4d4b47;
         margin-bottom: 20px;
         text-align: center;
+        background-color: #cbc7c5;
+        opacity: 0.8;
+        border-radius:20px;
+        padding : 5px;
     }
 </style>
 """
