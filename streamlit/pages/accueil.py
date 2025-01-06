@@ -1,6 +1,14 @@
 import streamlit as st
 import pandas as pd
 import time 
+from streamlit_player import st_player
+
+if 'first_run' not in st.session_state:
+    st.session_state.first_run = True
+    time.sleep(3)
+    st.rerun()
+else:
+    st.session_state.first_run = False
 
 
 css = """
@@ -37,7 +45,7 @@ with bloc_video.container():
 
     </style>
     <div id="video-container">
-        <iframe width="560" height="315"
+        <iframe width="1120" height="630"
             src="https://www.youtube.com/embed/XVEflECtfBM?enablejsapi=1&autoplay=1&controls=0&si=rKe9e2NgaHpaMHpG" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             referrerpolicy="strict-origin-when-cross-origin" 
