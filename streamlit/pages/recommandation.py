@@ -53,7 +53,7 @@ if st.session_state.show_content:
     # Entrée utilisateur pour le titre du film
 
     film_cible = st.text_input('Rechercher un titre',help='Saisir un titre et cliquer sur Entrer')
-
+    
     # Initialisation des variables 
     liste_image = []
     liste_id = []
@@ -64,6 +64,8 @@ if st.session_state.show_content:
         if not films['original_title'].str.contains(film_cible_lower).any():
             st.write(f"Le film '{film_cible}' n'est pas disponible.")
         else:
+            st.text('Voici les films correspondants à votre recherche. Cliquer sur une image pour sélectionner votre film')
+            
             films_identiques = films['id_tmdb'][films['original_title'].str.contains(film_cible_lower)]
                    
 
