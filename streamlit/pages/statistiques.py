@@ -52,7 +52,7 @@ fig.add_trace(go.Bar(
     x=budget['year'],
     y=budget['budget_max'],
     name='Budget Max',
-    marker_color='blue'  # Couleur des barres
+    marker_color='#3b9cd1'  # Couleur des barres
 ))
 # Ajouter la courbe pour le budget moyen
 fig.add_trace(go.Scatter(
@@ -60,7 +60,7 @@ fig.add_trace(go.Scatter(
     y=budget['budget_moyen'],
     name='Budget Moyen',
     mode='lines+markers',  # Ligne avec des marqueurs
-    line=dict(color='red', width=3),  # Couleur et largeur de la ligne
+    line=dict(color='#b960d6', width=3),  # Couleur et largeur de la ligne
     marker=dict(symbol='circle', size=8)  # Personnalisation des marqueurs
 ))
 fig.update_layout(
