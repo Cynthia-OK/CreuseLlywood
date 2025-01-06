@@ -33,7 +33,7 @@ acteur_select = st.text_input('Saisir un acteur')
 acteur_select_lower = acteur_select.lower()
 #vérifier que la saisie est dans la liste si oui on affiche la liste des acteurs correspondant dans la liste disponible
 if not acteurs_liste_films['acteur_lower'].str.contains(acteur_select_lower).any():
-    st.write(f"L'acteur' '{acteur_select}' n'est pas dans le dataset.")
+    st.write(f"L'acteur' '{acteur_select}' n'est pas disponible.")
 if acteurs_liste_films['acteur_lower'].str.contains(acteur_select_lower).any() and acteur_select:
     films_acteur_dipo = acteurs_liste_films[acteurs_liste_films['acteur_lower'].str.contains(acteur_select_lower)]
     liste_acteurs_dispo = films_acteur_dipo['acteur'].tolist()
