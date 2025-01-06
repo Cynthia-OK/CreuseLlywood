@@ -89,10 +89,10 @@ with bloc_image:
                                     border: solid;
                                     border-color: rgba(232, 229, 228);
                                     color: black;
-                                    padding: 10px 20px 10px 20px;
+                                    padding: 15px 20px 10px 20px;
                                     text-align: center;
                                     display: inline-block;
-                                    font-size: 20px;
+                                    font-size: 18px;
                                     font_weigt:bold;
                                     margin: 10px 5px 10px 5px;
                                     cursor: pointer;
@@ -141,7 +141,7 @@ with bloc_image:
                         <p class = bouttons>
                         <a id="link" href="./recommandation" class="button_large">Rechercher des films similaires</a><p>
                         <p class = bouttons>
-                        <a id="link" href="./recherche_directeur" class="button_small">Rechercher par directeur</a>
+                        <a id="link" href="./recherche_directeur" class="button_small">Rechercher par réalisateur</a>
                         <a id="link" href="./recherche_acteur" class="button_small">Rechercher par acteur</a>
                         <a id="link" href="./recherche_genre" class="button_small">Rechercher par genre</a>
                         <a id="link" href="./recherche_annee" class="button_small">Rechercher par année</a></p>
