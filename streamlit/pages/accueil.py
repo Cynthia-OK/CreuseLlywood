@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import time 
-from streamlit_player import st_player
+
 
 if 'first_run' not in st.session_state:
     st.session_state.first_run = True
