@@ -38,7 +38,7 @@ with bloc_video.container():
     </style>
     <div id="video-container">
         <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/XVEflECtfBM?autoplay=1&controls=0&si=rKe9e2NgaHpaMHpG" 
+            src="https://www.youtube.com/embed/XVEflECtfBM?enablejsapi=1&autoplay=1&controls=0&si=rKe9e2NgaHpaMHpG" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen>
